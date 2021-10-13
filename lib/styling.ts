@@ -7,7 +7,13 @@ const styling = {
   lineHeight: {
     small: ["sm", "md", "lg"],
     medium: ["lg", "xl", "2xl"],
-    big: ["2xl", "3xl", "4xl"],
+    big: ["lg", "xl", "2xl"],
+  },
+  heading: {
+    color: {
+      hex: "#b45309",
+      name: "amber.700"
+    }
   }
 }
 

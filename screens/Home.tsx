@@ -60,7 +60,9 @@ function Home({ navigation }: Props): ReactElement {
             navigation.navigate("Bar");
           }}
         >
-          <Text>Entrar</Text>
+          <Text
+          color="white"
+          >Entrar</Text>
         </Button>
       </Container>
     </Box >

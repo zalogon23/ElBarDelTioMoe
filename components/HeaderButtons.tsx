@@ -2,6 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { HStack } from 'native-base'
 import React, { ReactElement } from 'react'
 import ScreensParamsList, { ScreensType } from '../lib/screens'
+import styling from '../lib/styling'
 import IconButton from './IconButton'
 
 type Props = NativeStackScreenProps<ScreensParamsList, ScreensType>
@@ -11,21 +12,21 @@ function HeaderButtons({ navigation }: Props): ReactElement {
     <HStack>
       <IconButton
         name="search"
-        color="amber.300"
+        color={styling.heading.color.name}
         focusColor="white"
         p="2"
         size="sm"
       />
       <IconButton
         name="flask"
-        color="amber.300"
+        color={styling.heading.color.name}
         focusColor="white"
         p="2"
         size="sm"
       />
       <IconButton
         name="user"
-        color="amber.300"
+        color={styling.heading.color.name}
         focusColor="white"
         p="2"
         size="sm"

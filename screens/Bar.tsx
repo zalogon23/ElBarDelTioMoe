@@ -1,8 +1,9 @@
-import { Box, Container } from 'native-base'
+import { Box, Container, HStack, ScrollView, SectionList } from 'native-base'
 import React, { ReactElement } from 'react'
 import Background from '../components/Background'
 import ButtonWithIcon from '../components/ButtonWithIcon';
 import Heading from '../components/Heading';
+import SmallCard from '../components/SmallCard';
 const background = require("../assets/bar.png");
 
 function Bar(): ReactElement {
@@ -16,23 +17,41 @@ function Bar(): ReactElement {
       />
       <Container
         mx="auto"
-        py="8"
+        pt="10"
         w="100%"
         flexGrow={1}
       >
-        <Heading
+        <ButtonWithIcon
+          dir="right"
+          name="arrow-right"
           color="white"
+          py="1"
+          focusColor="amber.300"
+          style={{
+            shadowColor: "#0005",
+            shadowOffset: {
+              width: -6,
+              height: 6
+            }
+          }}
         >
-          <ButtonWithIcon
-            dir="right"
-            name="arrow-right"
-            color="white"
-            py="1"
-            focusColor="amber.300"
+          Clasicos
+        </ButtonWithIcon>
+        <ScrollView
+          alignSelf="center"
+          pt="12"
+          w="120%"
+          horizontal={true}
+        >
+          <HStack
+            space="8"
+            px="10"
           >
-            Clasicos
-          </ButtonWithIcon>
-        </Heading>
+            <SmallCard />
+            <SmallCard />
+            <SmallCard />
+          </HStack>
+        </ScrollView>
       </Container>
     </Box>
   )
