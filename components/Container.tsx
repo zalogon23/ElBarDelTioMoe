@@ -10,7 +10,7 @@ function Container({ children, ...props }: Props): ReactElement {
   return (
     <NativeContainer
       mx="auto"
-      pt="10"
+      pt={["4", "8"]}
       w="100%"
       flexGrow={1}
       {...props}
