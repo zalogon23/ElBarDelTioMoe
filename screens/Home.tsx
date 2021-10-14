@@ -1,6 +1,6 @@
-import { FontAwesome } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { ArrowForwardIcon, Box, Container, Button, HStack, Image, Icon } from 'native-base'
+import { Box, Container, Button, HStack } from 'native-base'
+import ButtonWithIcon from '../components/ButtonWithIcon';
 import React, { ReactElement } from 'react'
 import IconButton from "../components/IconButton";
 import Background from '../components/Background';
@@ -23,7 +23,7 @@ function Home({ navigation }: Props): ReactElement {
       <Container
         mx="auto"
         alignItems="center"
-        py="8"
+        pt="20"
         px="4"
       >
         <Heading
@@ -52,18 +52,21 @@ function Home({ navigation }: Props): ReactElement {
           <CircleIconButton />
           <CircleIconButton />
         </HStack>
-        <Button
+        <ButtonWithIcon
+          shadow
+          dir="right"
+          name="arrow-right"
+          color="white"
+          py="2"
           mt="8"
-          colorScheme="amber"
-          rightIcon={<ArrowForwardIcon />}
+          focusColor="amber.300"
           onPress={() => {
             navigation.navigate("Bar");
           }}
         >
-          <Text
-          color="white"
-          >Entrar</Text>
-        </Button>
+          Entrar
+        </ButtonWithIcon>
+
       </Container>
     </Box >
   )

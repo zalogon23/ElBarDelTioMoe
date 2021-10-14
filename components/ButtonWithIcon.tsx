@@ -1,12 +1,14 @@
 import { FontAwesome } from '@expo/vector-icons'
 import { Button, Icon } from 'native-base'
 import React, { ReactElement } from 'react'
+import FontAwesomeIcon from './FontAwesomeIcon'
 import Heading from './Heading'
 import Text from './Text'
 
 interface Props {
   name: string,
   color: string,
+  shadow?: boolean,
   titleColor?: string,
   focusColor: string,
   colorScheme?: string,
@@ -19,6 +21,7 @@ interface Props {
 }
 
 function ButtonWithIcon({
+  shadow = false,
   children,
   name,
   color,
@@ -33,19 +36,20 @@ function ButtonWithIcon({
   return (
     <Button
       colorScheme={colorScheme}
+      onPress={onPress}
       leftIcon={
         dir === "left" ?
-          <Icon
-            as={FontAwesome}
+          <FontAwesomeIcon
             name={name}
-          /> : undefined
+          />
+          : undefined
       }
       rightIcon={
         dir === "right" ?
-          <Icon
-            as={FontAwesome}
+          <FontAwesomeIcon
             name={name}
-          /> : undefined
+          />
+          : undefined
       }
       color={color}
       opacity={initialOpacity}
@@ -54,6 +58,13 @@ function ButtonWithIcon({
         opacity: 1,
         color: focusColor
       }}
+      style={shadow ? {
+        shadowColor: "#0005",
+        shadowOffset: {
+          width: -6,
+          height: 6
+        }
+      } : {}}
       {...props}
     >
       <Heading

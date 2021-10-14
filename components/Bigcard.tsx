@@ -2,16 +2,17 @@ import { Box, Image } from 'native-base'
 import React, { ReactElement } from 'react'
 import Text from './Text'
 
-export interface SmallCardProps{
+export interface BigCardProps {
   src?: string,
   title?: string,
+  description?: string
 }
 
-interface Props extends SmallCardProps{
+interface Props extends BigCardProps {
   [props: string]: any
 }
 
-function SmallCard({ ...props }: Props): ReactElement {
+function Bigcard({ ...props }: Props): ReactElement {
   return (
     <Box
       style={{
@@ -35,11 +36,17 @@ function SmallCard({ ...props }: Props): ReactElement {
       />
       <Box p="2">
         <Text
-        color="white"
-        >Tazon de Leche</Text>
+          color="white"
+        >Tazon de Leche
+        </Text>
+        <Text>
+          Históricamente uno de los platos favoritos del querido Tom de Tom y Jerry. Se
+          lo recuerda por ser el mas mamalon de todos los gatos del barrio. Quizá sea por esto que
+          gano un Grammy al mejor trapero del mundo, un terrible mamón.
+        </Text>
       </Box>
     </Box>
   )
 }
 
-export default SmallCard
+export default Bigcard

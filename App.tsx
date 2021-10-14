@@ -9,6 +9,7 @@ import ScreensParamsList, { ScreensType } from './lib/screens';
 import Bar from './screens/Bar';
 import HeaderButtons from './components/HeaderButtons';
 import styling from './lib/styling';
+import Beverages from './screens/Beverages';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -26,6 +27,11 @@ export default function App() {
       <NavigationContainer>
         <Navigator>
           <Screen
+            name="Beverages"
+            component={Beverages}
+            options={getHeaderOptions}
+          />
+          <Screen
             options={getHomeOptions}
             name="Home"
             component={Home}
@@ -33,7 +39,7 @@ export default function App() {
           <Screen
             name="Bar"
             component={Bar}
-            options={getBarOptions}
+            options={getHeaderOptions}
           />
         </Navigator>
       </NavigationContainer>
@@ -50,7 +56,7 @@ function getHomeOptions() {
 }
 
 
-function getBarOptions({ navigation, route }: NavigationProps) {
+function getHeaderOptions({ navigation, route }: NavigationProps) {
   return ({
     headerStyle: {
       backgroundColor: "#f90"

@@ -1,6 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons'
 import { Icon, IconButton as NativeIconButton } from 'native-base'
 import React, { ReactElement } from 'react'
+import FontAwesomeIcon from './FontAwesomeIcon'
 
 interface Props {
   name: string,
@@ -36,10 +37,7 @@ function IconButton({
       }}
       {...props}
       icon={
-        <Icon
-          as={FontAwesome}
-          name={name}
-        />
+        <FontAwesomeIcon name={name} />
       }
     />
   )
