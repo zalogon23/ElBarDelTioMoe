@@ -30,7 +30,7 @@ function SmallCard({
             height: 6
           }
         }}
-        w="13rem"
+        w="12rem"
         h={["14rem", "16rem"]}
         bg="amber.600"
         rounded="md"

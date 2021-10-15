@@ -24,6 +24,8 @@ function Beverages({ navigation, route }: Props): ReactElement {
       />
       <Container>
         <FiltersShelf
+          pt="0"
+          pb="10"
           removable
           filters={filters}
           setFilters={setFilters}

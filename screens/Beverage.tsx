@@ -30,6 +30,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
         >{beverage.name}
         </Heading>
         <BeverageImage
+          mt="10"
           image={beverage.image}
         />
         <FiltersShelf
@@ -61,7 +62,10 @@ function Beverage({ navigation, route }: Props): ReactElement {
   )
 }
 
-function BeverageImage({ image }: { image: string }): ReactElement {
+function BeverageImage({ image, ...props }: {
+  image: string,
+  [props: string]: any
+}): ReactElement {
   return (
     <Box
       style={{
@@ -71,11 +75,11 @@ function BeverageImage({ image }: { image: string }): ReactElement {
           height: 5
         }
       }}
-      mt="4"
       rounded="md"
       alignSelf="center"
       w="100%"
       h={["15rem", "25rem"]}
+      {...props}
     >
       <Image
         w="100%"

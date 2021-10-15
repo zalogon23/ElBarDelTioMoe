@@ -22,31 +22,35 @@ function Bar({ navigation }: Props): ReactElement {
         alt={alt}
       />
       <Container>
-        <ButtonWithIcon
-          shadow
-          dir="right"
-          name="arrow-right"
-          color="white"
-          py="1"
-          focusColor="amber.300"
-          onPress={() => {
-            navigation.navigate("Beverages", {
-              filters: [
-                "clasicos"
-              ]
-            })
-          }}
+        <Box
+          alignItems="flex-start"
         >
-          Clasicos
-        </ButtonWithIcon>
+          <ButtonWithIcon
+            shadow
+            dir="right"
+            name="arrow-right"
+            color="white"
+            py="1"
+            mb="10"
+            focusColor="amber.300"
+            onPress={() => {
+              navigation.navigate("Beverages", {
+                filters: [
+                  "clasicos"
+                ]
+              })
+            }}
+          >
+            Clasicos
+          </ButtonWithIcon>
+        </Box>
         <ScrollView
-          pt="12"
           flex={1}
           horizontal={true}
         >
           <HStack
-            space="8"
-            px="10"
+            space="6"
+            p="4"
           >
             {
               beverages.map(data => (

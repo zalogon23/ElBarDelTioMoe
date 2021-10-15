@@ -5,19 +5,23 @@ import FilterBadge from './FilterBadge';
 interface Props {
   filters: string[],
   removable: boolean,
-  setFilters: React.Dispatch<React.SetStateAction<string[]>>
+  setFilters: React.Dispatch<React.SetStateAction<string[]>>,
+  [props: string]: any
 }
 
 function FiltersShelf({
   filters,
   setFilters,
-  removable }: Props): ReactElement {
+  removable,
+  ...props
+}: Props): ReactElement {
   return (
     <HStack
       py="4"
       w="100%"
       flexWrap="wrap"
       space="3"
+      {...props}
     >
       {
         filters.map(content => (

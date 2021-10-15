@@ -15,7 +15,7 @@ function Container({ children, ...props }: Props): ReactElement {
       {...props}
     >
       <ScrollView
-        pt={["4", "8"]}
+        pt={["10", "14"]}
         px="2"
         w="100%"
         flex={1}
