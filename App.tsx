@@ -10,6 +10,7 @@ import Bar from './screens/Bar';
 import HeaderButtons from './components/HeaderButtons';
 import styling from './lib/styling';
 import Beverages from './screens/Beverages';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -23,27 +24,29 @@ export default function App() {
   const { Navigator, Screen } = createNativeStackNavigator<ScreensParamsList>();
 
   return (
-    <NativeBaseProvider>
-      <NavigationContainer>
-        <Navigator>
-          <Screen
-            options={getHomeOptions}
-            name="Home"
-            component={Home}
-          />
-          <Screen
-            name="Bar"
-            component={Bar}
-            options={getHeaderOptions}
-          />
-          <Screen
-            name="Beverages"
-            component={Beverages}
-            options={getHeaderOptions}
-          />
-        </Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
+    <SafeAreaProvider>
+      <NativeBaseProvider>
+        <NavigationContainer>
+          <Navigator>
+            <Screen
+              options={getHomeOptions}
+              name="Home"
+              component={Home}
+            />
+            <Screen
+              name="Bar"
+              component={Bar}
+              options={getHeaderOptions}
+            />
+            <Screen
+              name="Beverages"
+              component={Beverages}
+              options={getHeaderOptions}
+            />
+          </Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </SafeAreaProvider>
   )
 }
 

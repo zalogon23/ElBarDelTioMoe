@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Box, HStack, ScrollView, SectionList } from 'native-base'
 import React, { ReactElement } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Background from '../components/Background'
 import ButtonWithIcon from '../components/ButtonWithIcon';
 import Container from '../components/Container';
@@ -14,8 +15,10 @@ type Props = NativeStackScreenProps<ScreensParamsList, "Bar">
 
 function Bar({ navigation }: Props): ReactElement {
   return (
-    <Box
-      flexGrow={1}
+    <SafeAreaView
+      style={{
+        flexGrow: 1
+      }}
     >
       <Background
         source={background}
@@ -55,7 +58,7 @@ function Bar({ navigation }: Props): ReactElement {
           </HStack>
         </ScrollView>
       </Container>
-    </Box>
+    </SafeAreaView>
   )
 }
 
