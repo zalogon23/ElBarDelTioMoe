@@ -8,7 +8,7 @@ import Container from '../components/Container';
 import Heading from '../components/Heading';
 import SmallCard from '../components/SmallCard';
 import ScreensParamsList from '../lib/screens';
-const background = require("../assets/bar.png");
+import background, { alt } from "../lib/background";
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Bar">
 
@@ -22,7 +22,7 @@ function Bar({ navigation }: Props): ReactElement {
     >
       <Background
         source={background}
-        alt="Pared del bar con raspones que recuerdan al rostro de algun personaje."
+        alt={alt}
       />
       <Container>
         <ButtonWithIcon
