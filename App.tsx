@@ -30,11 +30,6 @@ export default function App() {
         <NavigationContainer>
           <Navigator>
             <Screen
-              name="Beverage"
-              component={Beverage}
-              options={getHeaderOptions}
-            />
-            <Screen
               options={getHomeOptions}
               name="Home"
               component={Home}
@@ -47,6 +42,11 @@ export default function App() {
             <Screen
               name="Beverages"
               component={Beverages}
+              options={getHeaderOptions}
+            />
+            <Screen
+              name="Beverage"
+              component={Beverage}
               options={getHeaderOptions}
             />
           </Navigator>
