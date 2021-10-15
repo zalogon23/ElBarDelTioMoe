@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Box, HStack, ScrollView, SectionList } from 'native-base'
+import { Box, HStack, ScrollView } from 'native-base'
 import React, { ReactElement } from 'react'
 import Background from '../components/Background'
 import SafeAreaView from '../components/SafeAreaView';
@@ -9,6 +9,7 @@ import SmallCard from '../components/SmallCard';
 import ScreensParamsList from '../lib/screens';
 import background, { alt } from "../lib/background";
 import beverages from "../mockdb/beverages";
+import { Dimensions } from 'react-native';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Bar">
 
@@ -39,9 +40,8 @@ function Bar({ navigation }: Props): ReactElement {
           Clasicos
         </ButtonWithIcon>
         <ScrollView
-          alignSelf="center"
           pt="12"
-          w="120%"
+          flex={1}
           horizontal={true}
         >
           <HStack
@@ -51,6 +51,7 @@ function Bar({ navigation }: Props): ReactElement {
             {
               beverages.map(data => (
                 <SmallCard
+                  key={data.id}
                   name={data.name}
                   image={data.image}
                   onPress={() => {

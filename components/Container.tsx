@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Container as NativeContainer } from "native-base"
+import { Container as NativeContainer, ScrollView } from "native-base"
 
 interface Props {
   children: ReactElement | ReactElement[],
@@ -10,12 +10,18 @@ function Container({ children, ...props }: Props): ReactElement {
   return (
     <NativeContainer
       mx="auto"
-      pt={["4", "8"]}
-      w="100%"
-      flexGrow={1}
+      pb="4"
+      flex={1}
       {...props}
     >
-      {children}
+      <ScrollView
+        pt={["4", "8"]}
+        px="2"
+        w="100%"
+        flex={1}
+      >
+        {children}
+      </ScrollView>
     </NativeContainer>
   )
 }

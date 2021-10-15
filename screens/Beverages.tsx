@@ -28,34 +28,27 @@ function Beverages({ navigation, route }: Props): ReactElement {
           filters={filters}
           setFilters={setFilters}
         />
-        <ScrollView
+        <VStack
           w="100%"
-          h="15rem"
-          borderTopColor="amber.500"
-          borderTopWidth="3"
+          pb="10"
+          space="16"
+          alignItems="center"
         >
-          <VStack
-            w="100%"
-            pb="10"
-            space="16"
-            alignItems="center"
-          >
-            {
-              beverages.map(data => (
-                <Bigcard
-                  key={data.id}
-                  onPress={() => {
-                    navigation.navigate("Beverage", { data })
-                  }}
-                  id={data.id}
-                  image={data.image}
-                  name={data.name}
-                  description={data.description}
-                />
-              ))
-            }
-          </VStack>
-        </ScrollView>
+          {
+            beverages.map(data => (
+              <Bigcard
+                key={data.id}
+                onPress={() => {
+                  navigation.navigate("Beverage", { data })
+                }}
+                id={data.id}
+                image={data.image}
+                name={data.name}
+                description={data.description}
+              />
+            ))
+          }
+        </VStack>
       </Container>
     </SafeAreaView>
   )

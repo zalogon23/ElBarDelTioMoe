@@ -6,8 +6,12 @@ import ScreensParamsList from '../lib/screens'
 import background, { alt } from "../lib/background";
 import Heading from '../components/Heading';
 import beverages from '../mockdb/beverages';
-import { Box, Image } from 'native-base';
+import { Box, Image, VStack } from 'native-base';
 import SafeAreaView from '../components/SafeAreaView';
+import FiltersShelf from '../components/FiltersShelf';
+import Text from '../components/Text';
+import Note from '../components/Note';
+import Instructions from '../components/Instructions';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverage">;
 
@@ -28,12 +32,36 @@ function Beverage({ navigation, route }: Props): ReactElement {
         <BeverageImage
           image={beverage.image}
         />
+        <FiltersShelf
+          filters={beverage.keywords}
+          setFilters={() => { }}
+          removable={false}
+        />
+        <Note>
+          <Heading
+            mb="2"
+          >Descripción</Heading>
+          <Text
+            color="black"
+          >{beverage.description}
+          </Text>
+        </Note>
+        <Note
+          mt="6"
+          bg="amber.400"
+        >
+          <Heading>Instrucciones</Heading>
+          <Instructions
+            donable
+            instructions={beverage.instructions}
+          />
+        </Note>
       </Container>
     </SafeAreaView>
   )
 }
 
-function BeverageImage({ image }: { image: string }) {
+function BeverageImage({ image }: { image: string }): ReactElement {
   return (
     <Box
       style={{
@@ -45,13 +73,14 @@ function BeverageImage({ image }: { image: string }) {
       }}
       mt="4"
       rounded="md"
-      overflow="hidden"
+      alignSelf="center"
       w="100%"
-      h="15rem"
+      h={["15rem", "25rem"]}
     >
       <Image
         w="100%"
-        h="15rem"
+        h={["15rem", "25rem"]}
+        rounded="md"
         source={{ uri: image }}
       />
     </Box>

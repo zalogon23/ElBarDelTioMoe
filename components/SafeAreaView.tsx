@@ -5,7 +5,7 @@ function SafeAreaView({ children }: { children: any }): ReactElement {
   return (
     <SafeAreaViewNative
       style={{
-        flexGrow: 1
+        flex: 1
       }}>
       {children}
     </SafeAreaViewNative>
