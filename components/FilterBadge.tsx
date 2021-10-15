@@ -18,12 +18,12 @@ function FilterBadge({
   ...props }: Props): ReactElement {
   return (
     <Badge
-      colorScheme="amber"
+      bg="amber.400"
       flexDirection="row"
       {...props}
     >
       <Text
-        color="black"
+      color="black"
         pr="2"
       >
         {children}
