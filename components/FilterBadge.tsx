@@ -6,11 +6,16 @@ import Text from './Text'
 
 interface Props {
   onPress: () => any,
+  removable: boolean,
   children: string | ReactElement | ReactElement[],
   [props: string]: any
 }
 
-function FilterBadge({ onPress, children, ...props }: Props): ReactElement {
+function FilterBadge({
+  onPress,
+  removable,
+  children,
+  ...props }: Props): ReactElement {
   return (
     <Badge
       colorScheme="amber"
@@ -23,14 +28,17 @@ function FilterBadge({ onPress, children, ...props }: Props): ReactElement {
       >
         {children}
       </Text>
-      <Pressable
-        onPress={onPress}
+      {
+        removable &&
+        <Pressable
+          onPress={onPress}
         >
-        <FontAwesomeIcon
-          size={styling.font.small}
-          name="times"
-        />
-      </Pressable>
+          <FontAwesomeIcon
+            size={styling.font.small}
+            name="times"
+          />
+        </Pressable>
+      }
     </Badge>
   )
 }

@@ -4,10 +4,14 @@ import FilterBadge from './FilterBadge';
 
 interface Props {
   filters: string[],
+  removable: boolean,
   setFilters: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-function FiltersShelf({ filters, setFilters }: Props): ReactElement {
+function FiltersShelf({
+  filters,
+  setFilters,
+  removable }: Props): ReactElement {
   return (
     <HStack
       py="4"
@@ -18,6 +22,7 @@ function FiltersShelf({ filters, setFilters }: Props): ReactElement {
       {
         filters.map(content => (
           <FilterBadge
+            removable={removable}
             key={content}
             onPress={() => {
               setFilters(filters.filter(filt => filt !== content))
