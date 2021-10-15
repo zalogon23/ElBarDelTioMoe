@@ -7,18 +7,14 @@ import Background from '../components/Background';
 import Heading from '../components/Heading';
 import Text from '../components/Text';
 import ScreensParamsList from '../lib/screens';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import SafeAreaView from '../components/SafeAreaView';
 const background = require("../assets/background.jpg");
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Home">
 
 function Home({ navigation }: Props): ReactElement {
   return (
-    <SafeAreaView
-      style={{
-        flexGrow: 1
-      }}
-    >
+    <SafeAreaView>
       <Background
         source={background}
         alt="Bar al anochecer con un cielo estrellado."

@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Box, ScrollView, VStack } from 'native-base'
 import React, { ReactElement, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import SafeAreaView from '../components/SafeAreaView';
 import Background from '../components/Background';
 import Bigcard from '../components/Bigcard';
 import Container from '../components/Container';
@@ -17,17 +17,14 @@ function Beverages({ navigation, route }: Props): ReactElement {
   const paramsFilters = route?.params?.filters;
   const [filters, setFilters] = useState(paramsFilters);
   return (
-    <SafeAreaView
-      style={{
-        flexGrow: 1
-      }}
-    >
+    <SafeAreaView>
       <Background
         source={background}
         alt={alt}
       />
       <Container>
         <FiltersShelf
+          removable
           filters={filters}
           setFilters={setFilters}
         />
