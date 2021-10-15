@@ -9,11 +9,12 @@ import FiltersShelf from '../components/FiltersShelf';
 import Heading from '../components/Heading';
 import ScreensParamsList from '../lib/screens';
 import background, { alt } from "../lib/background";
+import beverages from "../mockdb/beverages"
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverages">
 
-function Beverages({ route }: Props): ReactElement {
-  const paramsFilters = route?.params?.filters || ["clasicos", "populares", "modernos"];
+function Beverages({ navigation, route }: Props): ReactElement {
+  const paramsFilters = route?.params?.filters;
   const [filters, setFilters] = useState(paramsFilters);
   return (
     <SafeAreaView
@@ -42,10 +43,20 @@ function Beverages({ route }: Props): ReactElement {
             space="16"
             alignItems="center"
           >
-            <Bigcard />
-            <Bigcard />
-            <Bigcard />
-            <Bigcard />
+            {
+              beverages.map(data => (
+                <Bigcard
+                  key={data.id}
+                  onPress={() => {
+                    navigation.navigate("Beverage", { data })
+                  }}
+                  id={data.id}
+                  image={data.image}
+                  name={data.name}
+                  description={data.description}
+                />
+              ))
+            }
           </VStack>
         </ScrollView>
       </Container>

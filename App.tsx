@@ -11,6 +11,7 @@ import HeaderButtons from './components/HeaderButtons';
 import styling from './lib/styling';
 import Beverages from './screens/Beverages';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import Beverage from './screens/Beverage';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -41,6 +42,11 @@ export default function App() {
             <Screen
               name="Beverages"
               component={Beverages}
+              options={getHeaderOptions}
+            />
+            <Screen
+              name="Beverage"
+              component={Beverage}
               options={getHeaderOptions}
             />
           </Navigator>

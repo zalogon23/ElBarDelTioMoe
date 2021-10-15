@@ -5,10 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Background from '../components/Background'
 import ButtonWithIcon from '../components/ButtonWithIcon';
 import Container from '../components/Container';
-import Heading from '../components/Heading';
 import SmallCard from '../components/SmallCard';
 import ScreensParamsList from '../lib/screens';
 import background, { alt } from "../lib/background";
+import beverages from "../mockdb/beverages";
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Bar">
 
@@ -52,9 +52,17 @@ function Bar({ navigation }: Props): ReactElement {
             space="8"
             px="10"
           >
-            <SmallCard />
-            <SmallCard />
-            <SmallCard />
+            {
+              beverages.map(data => (
+                <SmallCard
+                  name={data.name}
+                  image={data.image}
+                  onPress={() => {
+                    navigation.navigate("Beverage", { data })
+                  }}
+                />
+              ))
+            }
           </HStack>
         </ScrollView>
       </Container>

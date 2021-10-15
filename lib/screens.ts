@@ -1,12 +1,17 @@
+import BeverageType from "./BeverageType";
+
 type ScreensParamsList = {
   Home: undefined,
   Bar: undefined,
   Beverages: {
     filters: string[]
+  },
+  Beverage: {
+    data: BeverageType
   }
 }
 
-type ScreensType = "Home" | "Bar" | "Beverages"
+type ScreensType = "Home" | "Bar" | "Beverages" | "Beverage"
 
 export default ScreensParamsList;
 
