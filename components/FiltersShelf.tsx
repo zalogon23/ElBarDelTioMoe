@@ -1,4 +1,4 @@
-import { HStack } from 'native-base';
+import { Box, HStack, Wrap } from 'native-base';
 import React, { ReactElement, useState } from 'react'
 import styling from '../lib/styling';
 import FilterBadge from './FilterBadge';
@@ -20,16 +20,17 @@ function FiltersShelf({
   ...props
 }: Props): ReactElement {
   return (
-    <HStack
+    <Box
+      flexDir="row"
       py="4"
       w="100%"
       flexWrap="wrap"
-      space="3"
       {...props}
     >
       {
         filters.map(content => (
           <FilterBadge
+            mr="3"
             removable={removable}
             key={content}
             onPress={
@@ -60,7 +61,7 @@ function FiltersShelf({
           />
         </FilterBadge>
       }
-    </HStack>
+    </Box>
   )
 }
 
