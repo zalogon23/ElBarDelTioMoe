@@ -6,30 +6,42 @@ import Text from './Text'
 interface Props {
   content: string,
   done?: boolean,
+  donable: boolean,
   onPress?: () => any | undefined,
   [props: string]: any
 }
 
-function Instruction({
+function LineCard({
+  donable,
   content,
   done = false,
   onPress = undefined,
   ...props
 }: Props): ReactElement {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-    >
+  if (donable) {
+    return (
+      <TouchableOpacity
+        onPress={onPress}
+      >
+        <Line />
+      </TouchableOpacity>
+    )
+  } else {
+    return (<Line />)
+  }
+
+  function Line() {
+    return (
       <Note
-        opacity={done ? 0.5 : 1}
+        opacity={done ? 0.7 : 1}
         px="3"
         py="3"
         {...props}
       >
         <Text>{content}</Text>
       </Note>
-    </TouchableOpacity>
-  )
+    )
+  }
 }
 
-export default Instruction
+export default LineCard

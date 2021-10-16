@@ -1,4 +1,4 @@
-import BeverageType from "./BeverageType";
+import BeverageType from "../models/BeverageType";
 
 type ScreensParamsList = {
   Home: undefined,

@@ -11,7 +11,8 @@ import SafeAreaView from '../components/SafeAreaView';
 import FiltersShelf from '../components/FiltersShelf';
 import Text from '../components/Text';
 import Note from '../components/Note';
-import Instructions from '../components/Instructions';
+import LineCardStack from '../components/LineCardStack';
+import BeverageType from '../models/BeverageType';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverage">;
 
@@ -48,17 +49,45 @@ function Beverage({ navigation, route }: Props): ReactElement {
           </Text>
         </Note>
         <Note
+          bg="amber.300"
           mt="6"
-          bg="amber.400"
+        >
+          <Heading>Ingredientes</Heading>
+          <LineCardStack
+            donable={false}
+            items={beverage.ingredients}
+          />
+        </Note>
+        <Note
+          mt="6"
+          bg="amber.500"
         >
           <Heading>Instrucciones</Heading>
-          <Instructions
+          <LineCardStack
             donable
-            instructions={beverage.instructions}
+            items={beverage.instructions}
           />
         </Note>
       </Container>
     </SafeAreaView>
+  )
+}
+
+function Ingredients({ beverage }: { beverage: BeverageType }): ReactElement {
+  return (
+    <>
+      {
+        beverage.ingredients.map((ingredient): ReactElement => (
+          <Note
+            px="3"
+            py="3"
+            bg="amber.400"
+          >
+            <Text>{ingredient.product}</Text>
+          </Note>
+        ))
+      }
+    </>
   )
 }
 
