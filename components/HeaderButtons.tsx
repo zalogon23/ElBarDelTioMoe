@@ -16,6 +16,7 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         focusColor="white"
         p="2"
         size="sm"
+        onPress={() => navigation.navigate("Beverages", { filters: [] })}
       />
       <IconButton
         name="flask"

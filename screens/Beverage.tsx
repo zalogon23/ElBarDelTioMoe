@@ -36,7 +36,6 @@ function Beverage({ navigation, route }: Props): ReactElement {
         />
         <FiltersShelf
           filters={beverage.keywords}
-          setFilters={() => { }}
           removable={false}
         />
         <Note>

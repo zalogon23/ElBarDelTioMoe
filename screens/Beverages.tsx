@@ -14,7 +14,7 @@ import beverages from "../mockdb/beverages"
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverages">
 
 function Beverages({ navigation, route }: Props): ReactElement {
-  const paramsFilters = route?.params?.filters;
+  const paramsFilters = route?.params?.filters ?? [];
   const [filters, setFilters] = useState(paramsFilters);
   return (
     <SafeAreaView>
