@@ -1,4 +1,4 @@
-import { Checkbox, Modal } from 'native-base'
+import { Box, Checkbox, Modal } from 'native-base'
 import React, { ReactElement, useEffect, useState } from 'react'
 import ButtonWithIcon from './ButtonWithIcon'
 import Heading from './Heading'
@@ -45,10 +45,10 @@ function CheckboxModal({
         >
           {
             values.map(value => (
-              <Note
+              <Box
                 key={value}
+                flexDir="row"
                 py="3"
-                px="0"
                 mb="2"
                 alignItems="center"
               >
@@ -60,7 +60,7 @@ function CheckboxModal({
                   onChange={checked => updateCheckedValues(checked, value)}
                   value={value}
                 />
-              </Note>
+              </Box>
             ))
           }
         </Modal.Body>
