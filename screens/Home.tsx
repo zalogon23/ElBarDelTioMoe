@@ -37,7 +37,9 @@ function Home({ navigation }: Props): ReactElement {
           borderRadius="md"
           opacity={0.5}
         >
-          <Text>
+          <Text
+          color="gray.200"
+          >
             Si querés saber las últimas recetas de cocktailes, date una vuelta!
           </Text>
         </Box>

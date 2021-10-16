@@ -10,7 +10,7 @@ interface Props {
 function Text({ children, ...props }: Props): ReactElement {
   return (
     <NativeText
-      color="gray.300"
+      color="gray.500"
       fontFamily="Montserrat-Regular"
       lineHeight={styling.lineHeight.medium}
       fontSize={styling.font.medium}

@@ -41,12 +41,14 @@ function ButtonWithIcon({
         dir === "left" ?
           <FontAwesomeIcon
             name={name}
+            size={size == "big" ? "md" : "xs"}
           />
           : undefined
       }
       rightIcon={
         dir === "right" ?
           <FontAwesomeIcon
+          size={size == "big" ? "md" : "xs"}
             name={name}
           />
           : undefined

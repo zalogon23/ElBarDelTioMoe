@@ -42,9 +42,8 @@ function Beverage({ navigation, route }: Props): ReactElement {
           <Heading
             mb="2"
           >Descripción</Heading>
-          <Text
-            color="black"
-          >{beverage.description}
+          <Text>
+            {beverage.description}
           </Text>
         </Note>
         <Note

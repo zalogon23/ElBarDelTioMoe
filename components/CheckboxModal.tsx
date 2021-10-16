@@ -70,10 +70,10 @@ function CheckboxModal({
             focusColor="amber.600"
             dir="right"
             onPress={() => action(checkedValues)}
-            name="arrow-right"
+            name="check"
             size="small"
           >
-            Elige filtros
+            Listo
           </ButtonWithIcon>
         </Modal.Footer>
       </Modal.Content>

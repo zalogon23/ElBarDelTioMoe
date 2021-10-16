@@ -59,6 +59,7 @@ function Bigcard({
           >{name}
           </Heading>
           <Text
+            color="white"
             isTruncated
             noOfLines="4"
           >
