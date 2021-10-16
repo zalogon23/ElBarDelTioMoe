@@ -13,7 +13,7 @@ interface Props {
   focusColor: string,
   colorScheme?: string,
   initialOpacity?: number,
-  size?: string,
+  size?: "big" | "small",
   dir: "left" | "right",
   onPress?: () => any,
   children: string | ReactElement | ReactElement[],
@@ -28,9 +28,9 @@ function ButtonWithIcon({
   titleColor = "white",
   colorScheme = "amber",
   dir,
+  size = "big",
   focusColor,
   initialOpacity = 1,
-  size = "md",
   onPress = () => { },
   ...props }: Props): ReactElement {
   return (
@@ -53,7 +53,6 @@ function ButtonWithIcon({
       }
       color={color}
       opacity={initialOpacity}
-      size={size}
       _focus={{
         opacity: 1,
         color: focusColor
@@ -67,11 +66,21 @@ function ButtonWithIcon({
       } : {}}
       {...props}
     >
-      <Heading
-        color={titleColor}
-      >
-        {children}
-      </Heading>
+      {
+        size == "big"
+          ?
+          <Heading
+            color={titleColor}
+          >
+            {children}
+          </Heading>
+          :
+          <Text
+            color={titleColor}
+          >
+            {children}
+          </Text>
+      }
     </Button>
   )
 }

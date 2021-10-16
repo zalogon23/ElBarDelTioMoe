@@ -41,6 +41,7 @@ function SmallCard({
           w="100%"
           h="10rem"
           src={image}
+          alt={name}
         />
         <Box
           p="4"

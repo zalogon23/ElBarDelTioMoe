@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Box, ScrollView, VStack } from 'native-base'
+import { Box, ScrollView, VStack, Button } from 'native-base'
 import React, { ReactElement, useState } from 'react'
 import SafeAreaView from '../components/SafeAreaView';
 import Background from '../components/Background';
@@ -10,12 +10,14 @@ import Heading from '../components/Heading';
 import ScreensParamsList from '../lib/screens';
 import background, { alt } from "../lib/background";
 import beverages from "../mockdb/beverages"
+import CheckboxModal from '../components/CheckboxModal';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverages">
 
 function Beverages({ navigation, route }: Props): ReactElement {
   const paramsFilters = route?.params?.filters ?? [];
   const [filters, setFilters] = useState(paramsFilters);
+  const [showFilters, setShowFilters] = useState(false);
   return (
     <SafeAreaView>
       <Background
@@ -23,12 +25,23 @@ function Beverages({ navigation, route }: Props): ReactElement {
         alt={alt}
       />
       <Container>
+        <CheckboxModal
+          open={showFilters}
+          setOpen={setShowFilters}
+          values={["clasico", "monarquico"]}
+          alreadyCheckedValues={filters}
+          action={values => {
+            setFilters(values)
+            setShowFilters(false)
+          }}
+        />
         <FiltersShelf
           pt="0"
           pb="10"
           removable
           filters={filters}
           setFilters={setFilters}
+          addFilter={() => setShowFilters(!showFilters)}
         />
         <VStack
           w="100%"

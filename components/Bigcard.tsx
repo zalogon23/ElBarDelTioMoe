@@ -45,6 +45,7 @@ function Bigcard({
           w="100%"
           h={["14rem", "20rem"]}
           src={image}
+          alt={description}
         />
         <Box
           p="6"

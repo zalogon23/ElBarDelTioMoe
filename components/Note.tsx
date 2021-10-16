@@ -17,6 +17,7 @@ function Note({
       py="6"
       px="4"
       w="100%"
+      flexDir="row"
       {...props}
     >
       {children}

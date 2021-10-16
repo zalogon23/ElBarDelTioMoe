@@ -1,10 +1,12 @@
 import { HStack } from 'native-base';
 import React, { ReactElement, useState } from 'react'
+import styling from '../lib/styling';
 import FilterBadge from './FilterBadge';
 import FontAwesomeIcon from './FontAwesomeIcon';
 
 interface Props {
   filters: string[],
+  addFilter?: () => any,
   removable: boolean,
   setFilters?: React.Dispatch<React.SetStateAction<string[]>>,
   [props: string]: any
@@ -13,6 +15,7 @@ interface Props {
 function FiltersShelf({
   filters,
   setFilters = undefined,
+  addFilter = () => { },
   removable,
   ...props
 }: Props): ReactElement {
@@ -47,10 +50,14 @@ function FiltersShelf({
         removable &&
         <FilterBadge
           removable={false}
-          onPress={() => alert("Agregar filtros")}
+          onPress={addFilter}
+          icon
           mb="3"
         >
-          +
+          <FontAwesomeIcon
+            name="plus"
+            size={styling.font.small}
+          />
         </FilterBadge>
       }
     </HStack>

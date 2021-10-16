@@ -1,6 +1,6 @@
 const styling = {
   font: {
-    small: ["xs", "sm", "md"],
+    small: ["xs", "sm"],
     medium: ["sm", "md", "lg"],
     big: ["xl", "2xl", "3xl"],
   },
