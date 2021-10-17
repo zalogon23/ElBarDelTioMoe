@@ -11,6 +11,7 @@ function Container({ children, ...props }: Props): ReactElement {
     <NativeContainer
       mx="auto"
       pb="4"
+      w="100%"
       flex={1}
       {...props}
     >

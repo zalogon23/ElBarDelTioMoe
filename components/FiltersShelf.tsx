@@ -22,8 +22,7 @@ function FiltersShelf({
   return (
     <Box
       flexDir="row"
-      py="4"
-      w="100%"
+      flex={1}
       flexWrap="wrap"
       {...props}
     >

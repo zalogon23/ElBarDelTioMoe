@@ -7,7 +7,11 @@ const beverages: BeverageType[] = [
     description: "Bebida aprodisíaca con notas de Lavanda. Aromatizada para que disfrutes del zaoco mundial.",
     image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
     keywords: [
-      "clasicos", "paradisiacos"
+      {
+        id: "keyword-1",
+        content: "clasicos",
+        beverage: "beverage-1"
+      }
     ],
     instructions: [
       {
@@ -63,7 +67,11 @@ const beverages: BeverageType[] = [
     description: "Bebida aprodisíaca con notas de Lavanda. Aromatizada para que disfrutes del zaoco mundial.",
     image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
     keywords: [
-      "clasicos", "paradisiacos"
+      {
+        id: "keyword-1",
+        content: "clasicos",
+        beverage: "beverage-2"
+      }
     ],
     instructions: [
       {
@@ -118,8 +126,11 @@ const beverages: BeverageType[] = [
     name: "Mojito de Cancun",
     description: "Bebida aprodisíaca con notas de Lavanda. Aromatizada para que disfrutes del zaoco mundial.",
     image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
-    keywords: [
-      "clasicos", "paradisiacos"
+    keywords: [{
+      id: "keyword-1",
+      content: "monarquicos",
+      beverage: "beverage-3"
+    }
     ],
     instructions: [
       {
