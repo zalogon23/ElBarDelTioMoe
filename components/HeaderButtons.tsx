@@ -10,7 +10,7 @@ type Props = NativeStackScreenProps<ScreensParamsList, ScreensType>
 function HeaderButtons({ navigation }: Props): ReactElement {
   return (
     <HStack
-    pr="2"
+      pr="1"
     >
       <IconButton
         name="search"
@@ -33,6 +33,7 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         focusColor="white"
         p="2"
         size="sm"
+        onPress={() => navigation.navigate("Profile")}
       />
     </HStack>
   )

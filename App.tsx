@@ -14,6 +14,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Beverage from './screens/Beverage';
 import BeveragesProvider from './contexts/BeveragesContext';
 import FiltersProvider from './contexts/FiltersContext';
+import Profile from './screens/Profile';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -34,6 +35,11 @@ export default function App() {
             <NavigationContainer>
               <Navigator>
                 <Screen
+                  name="Profile"
+                  component={Profile}
+                  options={getHeaderOptions}
+                />
+                <Screen
                   name="Beverages"
                   component={Beverages}
                   options={getHeaderOptions}
@@ -44,13 +50,13 @@ export default function App() {
                   component={Home}
                 />
                 <Screen
-                  name="Beverage"
-                  component={Beverage}
+                  name="Bar"
+                  component={Bar}
                   options={getHeaderOptions}
                 />
                 <Screen
-                  name="Bar"
-                  component={Bar}
+                  name="Beverage"
+                  component={Beverage}
                   options={getHeaderOptions}
                 />
               </Navigator>

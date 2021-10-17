@@ -8,10 +8,11 @@ type ScreensParamsList = {
   },
   Beverage: {
     data: BeverageType
-  }
+  },
+  Profile: undefined
 }
 
-type ScreensType = "Home" | "Bar" | "Beverages" | "Beverage"
+type ScreensType = "Home" | "Bar" | "Beverages" | "Beverage" | "Profile"
 
 export default ScreensParamsList;
 
