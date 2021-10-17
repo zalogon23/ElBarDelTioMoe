@@ -1,12 +1,13 @@
 import { Box, Checkbox, Modal } from 'native-base'
 import React, { ReactElement, useEffect, useState } from 'react'
+import KeywordType from '../models/KeywordType'
 import ButtonWithIcon from './ButtonWithIcon'
 import Heading from './Heading'
 import Note from './Note'
 import Text from './Text'
 
 interface Props {
-  values: any[],
+  values: KeywordType[],
   open: boolean,
   setOpen: (open: boolean) => any,
   alreadyCheckedValues?: any[],
@@ -44,9 +45,9 @@ function CheckboxModal({
           px="5"
         >
           {
-            values.map(value => (
+            values.map(keyword => (
               <Box
-                key={value}
+                key={keyword.id}
                 flexDir="row"
                 py="3"
                 mb="2"
@@ -54,11 +55,11 @@ function CheckboxModal({
               >
                 <Text
                   pr="2"
-                >{value}</Text>
+                >{keyword.content}</Text>
                 <Checkbox
-                  isChecked={checkedValues.includes(value)}
-                  onChange={checked => updateCheckedValues(checked, value)}
-                  value={value}
+                  isChecked={checkedValues.includes(keyword.content)}
+                  onChange={checked => updateCheckedValues(checked, keyword.content)}
+                  value={keyword.content}
                 />
               </Box>
             ))

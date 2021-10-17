@@ -12,6 +12,7 @@ import background, { alt } from "../lib/background";
 import CheckboxModal from '../components/CheckboxModal';
 import { beveragesContext } from '../contexts/BeveragesContext';
 import Loading from '../components/Loading';
+import { filtersContext } from '../contexts/FiltersContext';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverages">
 
@@ -21,6 +22,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
 
   const { applyFilters, beverages, isLoading } = useContext(beveragesContext)
   const [showFilters, setShowFilters] = useState(false);
+  const { filters: filterOptions } = useContext(filtersContext)
 
   useEffect(() => {
     applyFilters(filters)
@@ -36,7 +38,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
         <CheckboxModal
           open={showFilters}
           setOpen={setShowFilters}
-          values={["clasicos", "monarquicos"]}
+          values={filterOptions}
           alreadyCheckedValues={filters}
           action={values => {
             setFilters(values)

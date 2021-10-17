@@ -9,8 +9,7 @@ const beverages: BeverageType[] = [
     keywords: [
       {
         id: "keyword-1",
-        content: "clasicos",
-        beverage: "beverage-1"
+        content: "clasicos"
       }
     ],
     instructions: [
@@ -69,8 +68,7 @@ const beverages: BeverageType[] = [
     keywords: [
       {
         id: "keyword-1",
-        content: "clasicos",
-        beverage: "beverage-2"
+        content: "clasicos"
       }
     ],
     instructions: [
@@ -128,8 +126,7 @@ const beverages: BeverageType[] = [
     image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
     keywords: [{
       id: "keyword-1",
-      content: "monarquicos",
-      beverage: "beverage-3"
+      content: "monarquicos"
     }
     ],
     instructions: [

@@ -13,6 +13,7 @@ import Beverages from './screens/Beverages';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Beverage from './screens/Beverage';
 import BeveragesProvider from './contexts/BeveragesContext';
+import FiltersProvider from './contexts/FiltersContext';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -29,30 +30,32 @@ export default function App() {
     <SafeAreaProvider>
       <NativeBaseProvider>
         <BeveragesProvider>
-          <NavigationContainer>
-            <Navigator>
-              <Screen
-                name="Beverages"
-                component={Beverages}
-                options={getHeaderOptions}
-              />
-              <Screen
-                options={getHomeOptions}
-                name="Home"
-                component={Home}
-              />
-              <Screen
-                name="Beverage"
-                component={Beverage}
-                options={getHeaderOptions}
-              />
-              <Screen
-                name="Bar"
-                component={Bar}
-                options={getHeaderOptions}
-              />
-            </Navigator>
-          </NavigationContainer>
+          <FiltersProvider>
+            <NavigationContainer>
+              <Navigator>
+                <Screen
+                  name="Beverages"
+                  component={Beverages}
+                  options={getHeaderOptions}
+                />
+                <Screen
+                  options={getHomeOptions}
+                  name="Home"
+                  component={Home}
+                />
+                <Screen
+                  name="Beverage"
+                  component={Beverage}
+                  options={getHeaderOptions}
+                />
+                <Screen
+                  name="Bar"
+                  component={Bar}
+                  options={getHeaderOptions}
+                />
+              </Navigator>
+            </NavigationContainer>
+          </FiltersProvider>
         </BeveragesProvider>
       </NativeBaseProvider>
     </SafeAreaProvider>

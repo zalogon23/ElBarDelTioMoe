@@ -24,6 +24,7 @@ function FiltersShelf({
       flexDir="row"
       flex={1}
       flexWrap="wrap"
+      py="4"
       {...props}
     >
       {

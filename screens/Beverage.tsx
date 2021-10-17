@@ -35,7 +35,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
           image={beverage.image}
         />
         <FiltersShelf
-          filters={beverage.keywords}
+          filters={beverage.keywords.map(keyword => keyword.content)}
           removable={false}
         />
         <Note>
