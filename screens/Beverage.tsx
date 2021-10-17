@@ -38,7 +38,8 @@ function Beverage({ navigation, route }: Props): ReactElement {
           filters={beverage.keywords.map(keyword => keyword.content)}
           removable={false}
         />
-        <Note>
+        <Note
+          shadow>
           <Heading
             mb="2"
           >Descripción</Heading>
@@ -47,6 +48,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
           </Text>
         </Note>
         <Note
+          shadow
           bg="amber.300"
           mt="6"
         >
@@ -57,8 +59,10 @@ function Beverage({ navigation, route }: Props): ReactElement {
           />
         </Note>
         <Note
+          shadow
           mt="6"
           bg="amber.500"
+          mb="4"
         >
           <Heading>Instrucciones</Heading>
           <LineCardStack

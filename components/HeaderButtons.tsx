@@ -9,7 +9,9 @@ type Props = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 function HeaderButtons({ navigation }: Props): ReactElement {
   return (
-    <HStack>
+    <HStack
+    pr="2"
+    >
       <IconButton
         name="search"
         color={styling.heading.color.name}
