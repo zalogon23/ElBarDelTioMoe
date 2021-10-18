@@ -15,6 +15,7 @@ import Beverage from './screens/Beverage';
 import BeveragesProvider from './contexts/BeveragesContext';
 import FiltersProvider from './contexts/FiltersContext';
 import Profile from './screens/Profile';
+import UserProvider from './contexts/UserContext';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -30,39 +31,41 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NativeBaseProvider>
-        <BeveragesProvider>
-          <FiltersProvider>
-            <NavigationContainer>
-              <Navigator>
-                <Screen
-                  name="Profile"
-                  component={Profile}
-                  options={getHeaderOptions}
-                />
-                <Screen
-                  name="Beverages"
-                  component={Beverages}
-                  options={getHeaderOptions}
-                />
-                <Screen
-                  options={getHomeOptions}
-                  name="Home"
-                  component={Home}
-                />
-                <Screen
-                  name="Bar"
-                  component={Bar}
-                  options={getHeaderOptions}
-                />
-                <Screen
-                  name="Beverage"
-                  component={Beverage}
-                  options={getHeaderOptions}
-                />
-              </Navigator>
-            </NavigationContainer>
-          </FiltersProvider>
-        </BeveragesProvider>
+        <UserProvider>
+          <BeveragesProvider>
+            <FiltersProvider>
+              <NavigationContainer>
+                <Navigator>
+                  <Screen
+                    name="Profile"
+                    component={Profile}
+                    options={getHeaderOptions}
+                  />
+                  <Screen
+                    name="Beverages"
+                    component={Beverages}
+                    options={getHeaderOptions}
+                  />
+                  <Screen
+                    options={getHomeOptions}
+                    name="Home"
+                    component={Home}
+                  />
+                  <Screen
+                    name="Bar"
+                    component={Bar}
+                    options={getHeaderOptions}
+                  />
+                  <Screen
+                    name="Beverage"
+                    component={Beverage}
+                    options={getHeaderOptions}
+                  />
+                </Navigator>
+              </NavigationContainer>
+            </FiltersProvider>
+          </BeveragesProvider>
+        </UserProvider>
       </NativeBaseProvider>
     </SafeAreaProvider>
   )
