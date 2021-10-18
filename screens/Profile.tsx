@@ -4,9 +4,15 @@ import React, { ReactElement, useContext } from 'react'
 import Container from '../components/Container'
 import Heading from '../components/Heading'
 import Loading from '../components/Loading'
+import Note from '../components/Note'
 import SafeAreaView from '../components/SafeAreaView'
 import { userContext } from '../contexts/UserContext'
 import ScreensParamsList from '../lib/screens'
+import MainImage from "../components/MainImage"
+import Text from '../components/Text'
+import SmallCard from '../components/SmallCard'
+import UserType from '../models/UserType'
+import BeverageType from '../models/BeverageType'
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Profile">
 
@@ -26,19 +32,70 @@ function Profile({
         left={0}
         w="100%"
         h="100%"
-        bg="amber.200"
+        bg="amber.700"
       />
       {
-        isLoading
+        isLoading || user === null
           ?
           <Loading />
           :
           <Container>
-            <Heading>Perfil</Heading>
+            <Note
+              shadow
+              py="3"
+              px="3"
+              mb="6"
+            >
+              <Heading>{user.username}</Heading>
+            </Note>
+            <MainImage
+              mb="6"
+              image={user.avatar}
+            />
+            <Note
+              shadow
+              mb="6"
+            >
+              <Text>{user.description}</Text>
+            </Note>
+            <Note
+              mb="6"
+              shadow
+              alignItems="center"
+            >
+              <Heading
+                mb="5"
+              >Bebidas Favoritas</Heading>
+              {getBeveragesCards(user.favoriteBeverages)}
+            </Note>
+            <Note
+              mb="6"
+              shadow
+              alignItems="center"
+            >
+              <Heading
+                mb="5"
+              >Bebidas Creadas</Heading>
+              {getBeveragesCards(user.createdBeverages)}
+            </Note>
           </Container>
       }
     </SafeAreaView>
   )
+
+  function getBeveragesCards(beverages: BeverageType[]): ReactElement {
+    const cards = beverages.map(bev => (
+      <SmallCard
+        shadow={false}
+        name={bev.name}
+        image={bev.image}
+        onPress={() => navigation.navigate("Beverage", { data: bev })}
+      />
+    )) as ReactElement[]
+    return (
+      <>{cards}</>
+    )
+  }
 }
 
 export default Profile

@@ -5,7 +5,8 @@ export default interface UserType {
   id: string,
   username: string,
   password: string,
+  avatar: string,
   description: string,
-  favoriteBeverages: string[], // Beverages IDs
+  favoriteBeverages: BeverageType[],
   createdBeverages: BeverageType[],
 }

@@ -13,6 +13,7 @@ import Text from '../components/Text';
 import Note from '../components/Note';
 import LineCardStack from '../components/LineCardStack';
 import BeverageType from '../models/BeverageType';
+import MainImage from "../components/MainImage"
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Beverage">;
 
@@ -30,7 +31,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
           color="white"
         >{beverage.name}
         </Heading>
-        <BeverageImage
+        <MainImage
           mt="10"
           image={beverage.image}
         />
@@ -90,35 +91,6 @@ function Ingredients({ beverage }: { beverage: BeverageType }): ReactElement {
         ))
       }
     </>
-  )
-}
-
-function BeverageImage({ image, ...props }: {
-  image: string,
-  [props: string]: any
-}): ReactElement {
-  return (
-    <Box
-      style={{
-        shadowColor: "#0005",
-        shadowOffset: {
-          width: -5,
-          height: 5
-        }
-      }}
-      rounded="md"
-      alignSelf="center"
-      w="100%"
-      h={["15rem", "25rem"]}
-      {...props}
-    >
-      <Image
-        w="100%"
-        h={["15rem", "25rem"]}
-        rounded="md"
-        source={{ uri: image }}
-      />
-    </Box>
   )
 }
 

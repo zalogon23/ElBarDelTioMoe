@@ -6,6 +6,7 @@ import Text from './Text'
 export interface SmallCardProps {
   image: string,
   name: string,
+  shadow?: boolean,
   onPress?: () => any
 }
 
@@ -16,6 +17,7 @@ interface Props extends SmallCardProps {
 function SmallCard({
   name,
   image,
+  shadow = true,
   onPress = () => { },
   ...props }: Props): ReactElement {
   return (
@@ -23,13 +25,19 @@ function SmallCard({
       onPress={onPress}
     >
       <Box
-        style={{
-          shadowColor: "#0005",
-          shadowOffset: {
-            width: -6,
-            height: 6
-          }
-        }}
+        style={
+          shadow
+            ?
+            {
+              shadowColor: "#0005",
+              shadowOffset: {
+                width: -6,
+                height: 6
+              }
+            }
+            :
+            {}
+        }
         w="12rem"
         h={["14rem", "16rem"]}
         bg="amber.600"
