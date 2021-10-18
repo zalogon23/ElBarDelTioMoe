@@ -32,17 +32,19 @@ export default function BeveragesProvider({ children }: Props) {
 
   function applyFilters(filters: string[]) {
     setIsLoading(true)
-    if (!filters.length) {
-      setBeverages(() => {
-        setIsLoading(false);
-        return beveragesDB
-      })
-    } else {
-      setBeverages(() => {
-        setIsLoading(false)
-        return beveragesDB.filter(bev => bev.keywords.find(keyword => filters.includes(keyword.content)))
-      })
-    }
+    setTimeout(() => {
+      if (!filters.length) {
+        setBeverages(() => {
+          setIsLoading(false);
+          return beveragesDB
+        })
+      } else {
+        setBeverages(() => {
+          setIsLoading(false)
+          return beveragesDB.filter(bev => bev.keywords.find(keyword => filters.includes(keyword.content)))
+        })
+      }
+    }, 700)
   }
 }
 export { beveragesContext }

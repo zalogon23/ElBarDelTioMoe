@@ -24,7 +24,7 @@ export default function UserProvider({ children }: Props) {
           setIsLoading(false)
           return asyncUser
         })
-      }, 2000)
+      }, 700)
     })()
   }, [])
   return (
