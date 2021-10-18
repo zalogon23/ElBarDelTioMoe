@@ -19,10 +19,12 @@ export default function UserProvider({ children }: Props) {
   useEffect(() => {
     (async () => {
       const asyncUser = await getUser()
-      setReceivedUser(() => {
-        setIsLoading(false)
-        return asyncUser
-      })
+      setTimeout(() => {
+        setReceivedUser(() => {
+          setIsLoading(false)
+          return asyncUser
+        })
+      }, 2000)
     })()
   }, [])
   return (
