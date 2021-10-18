@@ -18,9 +18,6 @@ export default function BeveragesProvider({ children }: Props) {
   const [isLoading, setIsLoading] = useState(true)
   const [beverages, setBeverages] = useState([] as BeverageType[])
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [beverages])
   return (
     <beveragesContext.Provider
       value={{
@@ -36,9 +33,15 @@ export default function BeveragesProvider({ children }: Props) {
   function applyFilters(filters: string[]) {
     setIsLoading(true)
     if (!filters.length) {
-      setBeverages(beveragesDB)
+      setBeverages(() => {
+        setIsLoading(false);
+        return beveragesDB
+      })
     } else {
-      setBeverages(beveragesDB.filter(bev => bev.keywords.find(keyword => filters.includes(keyword.content))))
+      setBeverages(() => {
+        setIsLoading(false)
+        return beveragesDB.filter(bev => bev.keywords.find(keyword => filters.includes(keyword.content)))
+      })
     }
   }
 }
