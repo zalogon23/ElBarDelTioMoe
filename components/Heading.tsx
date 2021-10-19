@@ -11,7 +11,7 @@ function Heading({ children, ...props }: Props): ReactElement {
   return (
     <NativeHeading
       color="black"
-      fontFamily="Montserrat-Bold"
+      fontFamily={["Montserrat-Bold", "sans-serif"]}
       lineHeight={styling.lineHeight.big}
       fontSize={styling.font.big}
       {...props}

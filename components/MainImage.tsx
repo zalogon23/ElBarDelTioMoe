@@ -19,12 +19,12 @@ export default function BeverageImage({ image, ...props }: Props): ReactElement 
       rounded="md"
       alignSelf="center"
       w="100%"
-      h={["15rem", "25rem"]}
+      h={180}
       {...props}
     >
       <Image
         w="100%"
-        h={["15rem", "25rem"]}
+        h={180}
         rounded="md"
         source={{ uri: image }}
       />

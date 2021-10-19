@@ -29,63 +29,66 @@ function Beverages({ navigation, route }: Props): ReactElement {
   }, [filters])
 
   return (
-    <SafeAreaView>
+    <>
       <Background
         source={background}
         alt={alt}
       />
-      <Container
-        withoutScroll
-        pb="0"
-      >
-        <FiltersShelf
-          pt="0"
-          pb="10"
-          removable
-          filters={filters}
-          setFilters={setFilters}
-          addFilter={() => setShowFilters(!showFilters)}
-        />
-      </Container>
-      {
-        isLoading
-          ?
-          <Loading />
-          :
-          <Container>
-            <CheckboxModal
-              open={showFilters}
-              setOpen={setShowFilters}
-              values={filterOptions}
-              alreadyCheckedValues={filters}
-              action={values => {
-                setFilters(values)
-                setShowFilters(false)
-              }}
-            />
-            <VStack
-              w="100%"
-              pb="10"
-              space="16"
-              alignItems="center"
-            >
-              {
+      <SafeAreaView>
+        <Container
+          withoutScroll
+          flex={0}
+          pb="0"
+        >
+          <FiltersShelf
+            pt="0"
+            pb="10"
+            removable
+            filters={filters}
+            setFilters={setFilters}
+            addFilter={() => setShowFilters(!showFilters)}
+          />
+        </Container>
+        {
+          isLoading
+            ?
+            <Loading />
+            :
+            <Container>
+              <CheckboxModal
+                open={showFilters}
+                setOpen={setShowFilters}
+                values={filterOptions}
+                alreadyCheckedValues={filters}
+                action={values => {
+                  setFilters(values)
+                  setShowFilters(false)
+                }}
+              />
+              <VStack
+                w="100%"
+                pb="10"
+                space="16"
+                alignItems="center"
+              >
+                {
 
-                beverages.map(data => (
-                  <Bigcard
-                    key={data.id}
-                    onPress={() => {
-                      navigation.navigate("Beverage", { data })
-                    }}
-                    image={data.image}
-                    name={data.name}
-                    description={data.description}
-                  />))
-              }
-            </VStack>
-          </Container>
-      }
-    </SafeAreaView>
+                  beverages.map(data => (
+                    <Bigcard
+                      key={data.id}
+                      onPress={() => {
+                        navigation.navigate("Beverage", { data })
+                      }}
+                      image={data.image}
+                      name={data.name}
+                      description={data.description}
+                    />))
+                }
+              </VStack>
+            </Container>
+        }
+      </SafeAreaView>
+    </>
   )
 }
 

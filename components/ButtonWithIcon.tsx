@@ -48,7 +48,7 @@ function ButtonWithIcon({
       rightIcon={
         dir === "right" ?
           <FontAwesomeIcon
-          size={size == "big" ? "md" : "xs"}
+            size={size == "big" ? "md" : "xs"}
             name={name}
           />
           : undefined

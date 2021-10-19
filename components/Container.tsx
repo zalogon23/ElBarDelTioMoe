@@ -9,33 +9,40 @@ interface Props {
 
 function Container({ withoutScroll = false, children, ...props }: Props): ReactElement {
   return (
-    <NativeContainer
-      mx="auto"
-      pb="4"
-      w="100%"
-      flex={withoutScroll ? undefined : 1}
-      {...props}
-    >{
+    <>
+      {
         withoutScroll
           ?
-          <Box
-            pt={["10", "14"]}
-            px="2"
-            w="100%"
-          >
-            {children}
-          </Box>
+          Default()
           :
           <ScrollView
-            pt={["10", "14"]}
             px="2"
             w="100%"
             flex={1}
           >
-            {children}
+            {Default()}
           </ScrollView>}
-    </NativeContainer>
+    </>
   )
+
+  function Default(): ReactElement {
+    return (
+      <NativeContainer
+        py={25}
+        mx="auto"
+        w="100%"
+        flex={1}
+        {...props}
+      >
+        <Box
+          px="2"
+          w="100%"
+        >
+          {children}
+        </Box>
+      </NativeContainer>
+    )
+  }
 }
 
 export default Container

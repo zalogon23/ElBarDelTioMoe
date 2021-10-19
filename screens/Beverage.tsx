@@ -21,58 +21,60 @@ function Beverage({ navigation, route }: Props): ReactElement {
 
   const beverage = route?.params?.data ?? beverages[0];
   return (
-    <SafeAreaView>
+    <>
       <Background
         source={background}
         alt={alt}
       />
-      <Container>
-        <Heading
-          color="white"
-        >{beverage.name}
-        </Heading>
-        <MainImage
-          mt="10"
-          image={beverage.image}
-        />
-        <FiltersShelf
-          filters={beverage.keywords.map(keyword => keyword.content)}
-          removable={false}
-        />
-        <Note
-          shadow>
+      <SafeAreaView>
+        <Container>
           <Heading
-            mb="2"
-          >Descripción</Heading>
-          <Text>
-            {beverage.description}
-          </Text>
-        </Note>
-        <Note
-          shadow
-          bg="amber.300"
-          mt="6"
-        >
-          <Heading>Ingredientes</Heading>
-          <LineCardStack
-            donable={false}
-            items={beverage.ingredients}
+            color="white"
+          >{beverage.name}
+          </Heading>
+          <MainImage
+            mt="10"
+            image={beverage.image}
           />
-        </Note>
-        <Note
-          shadow
-          mt="6"
-          bg="amber.500"
-          mb="4"
-        >
-          <Heading>Instrucciones</Heading>
-          <LineCardStack
-            donable
-            items={beverage.instructions}
+          <FiltersShelf
+            filters={beverage.keywords.map(keyword => keyword.content)}
+            removable={false}
           />
-        </Note>
-      </Container>
-    </SafeAreaView>
+          <Note
+            shadow>
+            <Heading
+              mb="2"
+            >Descripción</Heading>
+            <Text>
+              {beverage.description}
+            </Text>
+          </Note>
+          <Note
+            shadow
+            bg="amber.300"
+            mt="6"
+          >
+            <Heading>Ingredientes</Heading>
+            <LineCardStack
+              donable={false}
+              items={beverage.ingredients}
+            />
+          </Note>
+          <Note
+            shadow
+            mt="6"
+            bg="amber.500"
+            mb="4"
+          >
+            <Heading>Instrucciones</Heading>
+            <LineCardStack
+              donable
+              items={beverage.instructions}
+            />
+          </Note>
+        </Container>
+      </SafeAreaView>
+    </>
   )
 }
 

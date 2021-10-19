@@ -15,6 +15,7 @@ function Background({ source, alt }: Props): ReactElement {
       top={0}
       left={0}
       alt={alt}
+      flex={1}
       w="100%"
       h="100%"
     />

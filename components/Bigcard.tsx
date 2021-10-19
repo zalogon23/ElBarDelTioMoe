@@ -34,34 +34,33 @@ function Bigcard({
             height: 6
           }
         }}
-        w="100%"
-        maxWidth="30rem"
+        w={220}
         bg="amber.600"
         rounded="md"
         overflow="hidden"
         {...props}
       >
         <Image
-          w="100%"
-          h={["14rem", "20rem"]}
+          w={220}
+          h={200}
           src={image}
           alt={description}
         />
         <Box
-          p="6"
-          pt="4"
+          p={6}
+          pt={4}
         >
           <Heading
             isTruncated
-            noOfLines="2"
+            noOfLines={2}
             color="black"
-            mb="4"
+            mb={4}
           >{name}
           </Heading>
           <Text
             color="white"
             isTruncated
-            noOfLines="4"
+            noOfLines={4}
           >
             {description}
           </Text>

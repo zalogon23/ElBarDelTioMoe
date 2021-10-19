@@ -38,26 +38,25 @@ function SmallCard({
             :
             {}
         }
-        w="12rem"
-        h={["14rem", "16rem"]}
+        w={160}
         bg="amber.600"
         rounded="md"
         overflow="hidden"
         {...props}
       >
         <Image
-          w="100%"
-          h="10rem"
+          w={160}
+          h={100}
           src={image}
           alt={name}
         />
         <Box
-          p="4"
-          pt="2"
+          p={4}
+          pt={2}
         >
           <Text
             isTruncated
-            noOfLines="2"
+            noOfLines={2}
             color="white"
           >{name}
           </Text>
