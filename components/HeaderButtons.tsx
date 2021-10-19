@@ -18,7 +18,7 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         focusColor="white"
         p="2"
         size="sm"
-        onPress={() => navigation.navigate("Beverages", { filters: [] })}
+        onPress={() => navigation.navigate("Bebidas", { filters: [] })}
       />
       <IconButton
         name="flask"
@@ -26,6 +26,7 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         focusColor="white"
         p="2"
         size="sm"
+        onPress={() => navigation.navigate("Lab")}
       />
       <IconButton
         name="user"
@@ -33,7 +34,7 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         focusColor="white"
         p="2"
         size="sm"
-        onPress={() => navigation.navigate("Profile")}
+        onPress={() => navigation.navigate("Perfil")}
       />
     </HStack>
   )
