@@ -6,7 +6,6 @@ import ScreensParamsList from '../lib/screens'
 import background, { alt } from "../lib/background";
 import Heading from '../components/Heading';
 import beverages from '../mockdb/beverages';
-import { Box, Image, VStack } from 'native-base';
 import SafeAreaView from '../components/SafeAreaView';
 import FiltersShelf from '../components/FiltersShelf';
 import Text from '../components/Text';
@@ -15,7 +14,7 @@ import LineCardStack from '../components/LineCardStack';
 import BeverageType from '../models/BeverageType';
 import MainImage from "../components/MainImage"
 
-type Props = NativeStackScreenProps<ScreensParamsList, "Beverage">;
+type Props = NativeStackScreenProps<ScreensParamsList, "Bebida">;
 
 function Beverage({ navigation, route }: Props): ReactElement {
 
@@ -33,6 +32,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
           >{beverage.name}
           </Heading>
           <MainImage
+            alt={beverage.name}
             mt="10"
             image={beverage.image}
           />
