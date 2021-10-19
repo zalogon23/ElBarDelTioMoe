@@ -16,6 +16,7 @@ import BeveragesProvider from './contexts/BeveragesContext';
 import FiltersProvider from './contexts/FiltersContext';
 import Profile from './screens/Profile';
 import UserProvider from './contexts/UserContext';
+import Lab from './screens/Lab';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -42,12 +43,12 @@ export default function App() {
                     component={Home}
                   />
                   <Screen
-                    name="Profile"
+                    name="Perfil"
                     component={Profile}
                     options={getHeaderOptions}
                   />
                   <Screen
-                    name="Beverages"
+                    name="Bebidas"
                     component={Beverages}
                     options={getHeaderOptions}
                   />
@@ -57,8 +58,12 @@ export default function App() {
                     options={getHeaderOptions}
                   />
                   <Screen
-                    name="Beverage"
+                    name="Bebida"
                     component={Beverage}
+                    options={getHeaderOptions}
+                  /><Screen
+                    name="Lab"
+                    component={Lab}
                     options={getHeaderOptions}
                   />
                 </Navigator>

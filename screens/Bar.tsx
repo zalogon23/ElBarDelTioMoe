@@ -16,9 +16,14 @@ type Props = NativeStackScreenProps<ScreensParamsList, "Bar">
 function Bar({ navigation }: Props): ReactElement {
   return (
     <>
-      <Background
-        source={background}
-        alt={alt}
+      <Box
+        position="absolute"
+        zIndex={-1}
+        top={0}
+        left={0}
+        w="100%"
+        h="100%"
+        bg="amber.700"
       />
       <SafeAreaView>
         <Container>
@@ -34,7 +39,7 @@ function Bar({ navigation }: Props): ReactElement {
               mb="10"
               focusColor="amber.300"
               onPress={() => {
-                navigation.navigate("Beverages", {
+                navigation.navigate("Bebidas", {
                   filters: [
                     "clasicos"
                   ]
@@ -59,7 +64,7 @@ function Bar({ navigation }: Props): ReactElement {
                     name={data.name}
                     image={data.image}
                     onPress={() => {
-                      navigation.navigate("Beverage", { data })
+                      navigation.navigate("Bebida", { data })
                     }}
                   />
                 ))

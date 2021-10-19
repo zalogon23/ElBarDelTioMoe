@@ -32,7 +32,7 @@ function Profile({
         left={0}
         w="100%"
         h="100%"
-        bg="amber.200"
+        bg="amber.700"
       />
       <SafeAreaView>
         {

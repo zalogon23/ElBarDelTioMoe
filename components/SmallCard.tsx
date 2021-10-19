@@ -38,15 +38,15 @@ function SmallCard({
             :
             {}
         }
-        w={160}
+        w={[160, 200]}
         bg="amber.600"
         rounded="md"
         overflow="hidden"
         {...props}
       >
         <Image
-          w={160}
-          h={100}
+          w={[160, 200]}
+          h={[100, 160]}
           src={image}
           alt={name}
         />

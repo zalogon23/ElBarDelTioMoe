@@ -3,10 +3,11 @@ import { Box, Image } from "native-base";
 
 interface Props {
   image: string,
+  alt: string,
   [props: string]: any
 }
 
-export default function BeverageImage({ image, ...props }: Props): ReactElement {
+export default function BeverageImage({ image, alt, ...props }: Props): ReactElement {
   return (
     <Box
       style={{
@@ -19,13 +20,14 @@ export default function BeverageImage({ image, ...props }: Props): ReactElement 
       rounded="md"
       alignSelf="center"
       w="100%"
-      h={180}
+      h={[180, 320]}
       {...props}
     >
       <Image
         w="100%"
-        h={180}
+        h={[180, 320]}
         rounded="md"
+        alt={alt}
         source={{ uri: image }}
       />
     </Box>

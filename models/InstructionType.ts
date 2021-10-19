@@ -2,6 +2,6 @@ export default interface InstructionType{
   id:string,
   content:string,
   order:number,
-  createdAt: Date,
+  createdAt: string,
   beverage:string
 }

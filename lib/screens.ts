@@ -3,16 +3,17 @@ import BeverageType from "../models/BeverageType";
 type ScreensParamsList = {
   Home: undefined,
   Bar: undefined,
-  Beverages: {
+  Bebidas: {
     filters: string[]
   },
-  Beverage: {
+  Bebida: {
     data: BeverageType
   },
-  Profile: undefined
+  Perfil: undefined,
+  Lab: undefined
 }
 
-type ScreensType = "Home" | "Bar" | "Beverages" | "Beverage" | "Profile"
+type ScreensType = "Home" | "Bar" | "Bebidas" | "Bebida" | "Perfil" | "Lab"
 
 export default ScreensParamsList;
 

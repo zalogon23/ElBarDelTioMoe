@@ -30,13 +30,18 @@ function Beverages({ navigation, route }: Props): ReactElement {
 
   return (
     <>
-      <Background
-        source={background}
-        alt={alt}
+      <Box
+        position="absolute"
+        zIndex={-1}
+        top={0}
+        left={0}
+        w="100%"
+        h="100%"
+        bg="amber.700"
       />
       <SafeAreaView>
         <FiltersShelf
-        bg="amber.200"
+        bg="amber.600"
           removable
           filters={filters}
           setFilters={setFilters}

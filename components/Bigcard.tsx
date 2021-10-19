@@ -34,15 +34,15 @@ function Bigcard({
             height: 6
           }
         }}
-        w={220}
+        w={[220, 400]}
         bg="amber.600"
         rounded="md"
         overflow="hidden"
         {...props}
       >
         <Image
-          w={220}
-          h={200}
+          w={[220, 400]}
+          h={[200, 320]}
           src={image}
           alt={description}
         />

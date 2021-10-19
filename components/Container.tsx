@@ -34,12 +34,7 @@ function Container({ withoutScroll = false, children, ...props }: Props): ReactE
         flex={1}
         {...props}
       >
-        <Box
-          px="2"
-          w="100%"
-        >
-          {children}
-        </Box>
+        {children}
       </NativeContainer>
     )
   }
