@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { Box } from 'native-base'
+import { Box, HStack, ScrollView } from 'native-base'
 import React, { ReactElement, useContext } from 'react'
 import Container from '../components/Container'
 import Heading from '../components/Heading'
@@ -14,7 +14,7 @@ import SmallCard from '../components/SmallCard'
 import UserType from '../models/UserType'
 import BeverageType from '../models/BeverageType'
 
-type Props = NativeStackScreenProps<ScreensParamsList, "Profile">
+type Props = NativeStackScreenProps<ScreensParamsList, "Perfil">
 
 function Profile({
   navigation,
@@ -24,7 +24,7 @@ function Profile({
   const { user, isLoading } = useContext(userContext)
 
   return (
-    <SafeAreaView>
+    <>
       <Box
         position="absolute"
         zIndex={-1}
@@ -32,68 +32,91 @@ function Profile({
         left={0}
         w="100%"
         h="100%"
-        bg="amber.700"
+        bg="amber.200"
       />
-      {
-        isLoading || user === null
-          ?
-          <Loading />
-          :
-          <Container>
-            <Note
-              shadow
-              py="3"
-              px="3"
-              mb="6"
-            >
-              <Heading>{user.username}</Heading>
-            </Note>
-            <MainImage
-              mb="6"
-              image={user.avatar}
-            />
-            <Note
-              shadow
-              mb="6"
-            >
-              <Text>{user.description}</Text>
-            </Note>
-            <Note
-              mb="6"
-              shadow
-              alignItems="center"
-            >
-              <Heading
-                mb="5"
-              >Bebidas Favoritas</Heading>
-              {getBeveragesCards(user.favoriteBeverages)}
-            </Note>
-            <Note
-              mb="6"
-              shadow
-              alignItems="center"
-            >
-              <Heading
-                mb="5"
-              >Bebidas Creadas</Heading>
-              {getBeveragesCards(user.createdBeverages)}
-            </Note>
-          </Container>
-      }
-    </SafeAreaView>
+      <SafeAreaView>
+        {
+          isLoading || user === null
+            ?
+            <Loading />
+            :
+            <Container>
+              <Note
+                shadow
+                bg="amber.500"
+                py="3"
+                px="3"
+                mb="6"
+              >
+                <Heading
+                  color="white"
+                >{user.username}</Heading>
+              </Note>
+              <MainImage
+                mb="6"
+                alt={user.username}
+                image={user.avatar}
+              />
+              <Note
+                shadow
+                mb="6"
+              >
+                <Text>{user.description}</Text>
+              </Note>
+              <Note
+                mb="6"
+                bg="amber.400"
+                shadow
+                alignItems="center"
+              >
+                <Heading
+                  mb="5"
+                >Bebidas Favoritas</Heading>
+                <CardsSlider>
+                  {getBeveragesCards(user.favoriteBeverages)}
+                </CardsSlider>
+              </Note>
+              <Note
+                bg="amber.500"
+                mb="6"
+                shadow
+                alignItems="center"
+              >
+                <Heading
+                  color="white"
+                  mb="5"
+                >Bebidas Creadas</Heading>
+                <CardsSlider>
+                  {getBeveragesCards(user.createdBeverages)}
+                </CardsSlider>
+              </Note>
+            </Container>
+        }
+      </SafeAreaView>
+    </>
   )
 
-  function getBeveragesCards(beverages: BeverageType[]): ReactElement {
+  function getBeveragesCards(beverages: BeverageType[]): ReactElement[] {
     const cards = beverages.map(bev => (
       <SmallCard
         shadow={false}
         name={bev.name}
         image={bev.image}
-        onPress={() => navigation.navigate("Beverage", { data: bev })}
+        onPress={() => navigation.navigate("Bebida", { data: bev })}
       />
     )) as ReactElement[]
+    return cards
+  }
+  function CardsSlider({ children }: { children: ReactElement | ReactElement[] }) {
     return (
-      <>{cards}</>
+      <ScrollView
+        horizontal
+      >
+        <HStack
+          space={4}>
+          {children}
+        </HStack>
+      </ScrollView>
     )
   }
 }
