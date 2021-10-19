@@ -1,6 +1,8 @@
 ## El Bar del Tio Moe
 
-Este proyecto contiene el Front End (Mobile) de la app (Pero también cuenta con un Backen en .NET 5)
+El lugar donde podrás descrubrir las recetas de tus bebidas preferidas, siguelas paso a paso y terminarás con una gran sonrisa. Si tienes tus propias pócimas y te gustaría compartir como las haces, también puedes hacerlo en la sección 'experimental'. ¡Si tu bebida consigue suficientes votos puede pasar a la sección de bebidas oficiales!
+
+Este proyecto contiene el Front End (Mobile) de la app (Pero también cuenta con un Backend en .NET 5)
 
 Algunas de las tecnologías usadas:
 - Native Base
