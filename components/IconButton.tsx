@@ -29,7 +29,7 @@ function IconButton({
         opacity: initialOpacity,
         size
       }}
-      _focus={{
+      _pressed={{
         _icon: {
           opacity: 1,
           color: focusColor

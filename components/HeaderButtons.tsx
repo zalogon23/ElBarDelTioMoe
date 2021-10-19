@@ -16,7 +16,6 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         name="search"
         color={styling.heading.color.name}
         focusColor="white"
-        p="2"
         size="sm"
         onPress={() => navigation.navigate("Bebidas", { filters: [] })}
       />
@@ -24,15 +23,13 @@ function HeaderButtons({ navigation }: Props): ReactElement {
         name="flask"
         color={styling.heading.color.name}
         focusColor="white"
-        p="2"
         size="sm"
         onPress={() => navigation.navigate("Lab")}
       />
       <IconButton
-        name="user"
+        name="user-circle"
         color={styling.heading.color.name}
         focusColor="white"
-        p="2"
         size="sm"
         onPress={() => navigation.navigate("Perfil")}
       />

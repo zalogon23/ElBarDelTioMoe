@@ -40,6 +40,7 @@ function ButtonWithIcon({
       leftIcon={
         dir === "left" ?
           <FontAwesomeIcon
+            color={color}
             name={name}
             size={size == "big" ? "md" : "xs"}
           />
@@ -48,6 +49,7 @@ function ButtonWithIcon({
       rightIcon={
         dir === "right" ?
           <FontAwesomeIcon
+            color={color}
             size={size == "big" ? "md" : "xs"}
             name={name}
           />
@@ -55,17 +57,12 @@ function ButtonWithIcon({
       }
       color={color}
       opacity={initialOpacity}
-      _focus={{
+      _pressed={{
         opacity: 1,
-        color: focusColor
+        bg: focusColor,
+        color: "white"
       }}
-      style={shadow ? {
-        shadowColor: "#0005",
-        shadowOffset: {
-          width: -6,
-          height: 6
-        }
-      } : {}}
+      shadow={3}
       {...props}
     >
       {

@@ -13,6 +13,7 @@ import Note from '../components/Note';
 import LineCardStack from '../components/LineCardStack';
 import BeverageType from '../models/BeverageType';
 import MainImage from "../components/MainImage"
+import { Box } from 'native-base';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Bebida">;
 
@@ -21,16 +22,23 @@ function Beverage({ navigation, route }: Props): ReactElement {
   const beverage = route?.params?.data ?? beverages[0];
   return (
     <>
-      <Background
-        source={background}
-        alt={alt}
+      <Box
+        position="absolute"
+        zIndex={-1}
+        top={0}
+        left={0}
+        w="100%"
+        h="100%"
+        bg="amber.700"
       />
       <SafeAreaView>
         <Container>
-          <Heading
-            color="white"
-          >{beverage.name}
-          </Heading>
+          <Note
+            py="3"
+            px="3"
+          >
+            <Heading>{beverage.name}</Heading>
+          </Note>
           <MainImage
             alt={beverage.name}
             mt="10"
@@ -41,7 +49,9 @@ function Beverage({ navigation, route }: Props): ReactElement {
             removable={false}
           />
           <Note
-            shadow>
+            shadow
+            mt="6"
+          >
             <Heading
               mb="2"
             >Descripción</Heading>
