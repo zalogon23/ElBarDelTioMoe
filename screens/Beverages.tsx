@@ -14,7 +14,7 @@ import { beveragesContext } from '../contexts/BeveragesContext';
 import Loading from '../components/Loading';
 import { filtersContext } from '../contexts/FiltersContext';
 
-type Props = NativeStackScreenProps<ScreensParamsList, "Beverages">
+type Props = NativeStackScreenProps<ScreensParamsList, "Bebidas">
 
 function Beverages({ navigation, route }: Props): ReactElement {
   const paramsFilters = route?.params?.filters ?? [];
@@ -35,20 +35,13 @@ function Beverages({ navigation, route }: Props): ReactElement {
         alt={alt}
       />
       <SafeAreaView>
-        <Container
-          withoutScroll
-          flex={0}
-          pb="0"
-        >
-          <FiltersShelf
-            pt="0"
-            pb="10"
-            removable
-            filters={filters}
-            setFilters={setFilters}
-            addFilter={() => setShowFilters(!showFilters)}
-          />
-        </Container>
+        <FiltersShelf
+        bg="amber.200"
+          removable
+          filters={filters}
+          setFilters={setFilters}
+          addFilter={() => setShowFilters(!showFilters)}
+        />
         {
           isLoading
             ?
@@ -77,7 +70,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
                     <Bigcard
                       key={data.id}
                       onPress={() => {
-                        navigation.navigate("Beverage", { data })
+                        navigation.navigate("Bebida", { data })
                       }}
                       image={data.image}
                       name={data.name}
