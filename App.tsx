@@ -91,7 +91,6 @@ function getHeaderOptions({ navigation, route }: NavigationProps) {
       backgroundColor: "#f90"
     },
     headerTintColor: styling.heading.color.hex,
-    headerShadowVisible: false,
     headerTitle: () => <Heading color={styling.heading.color.name}>{route.name}</Heading>,
     headerRight: () => <HeaderButtons route={route} navigation={navigation} />
   })

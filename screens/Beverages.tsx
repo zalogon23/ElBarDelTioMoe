@@ -41,7 +41,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
       />
       <SafeAreaView>
         <FiltersShelf
-        bg="amber.600"
+          bg="amber.600"
           removable
           filters={filters}
           setFilters={setFilters}

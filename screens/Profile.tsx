@@ -99,7 +99,7 @@ function Profile({
   function getBeveragesCards(beverages: BeverageType[]): ReactElement[] {
     const cards = beverages.map(bev => (
       <SmallCard
-        shadow={false}
+        shadow
         name={bev.name}
         image={bev.image}
         onPress={() => navigation.navigate("Bebida", { data: bev })}

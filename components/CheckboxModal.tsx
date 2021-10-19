@@ -53,21 +53,21 @@ function CheckboxModal({
                 mb="2"
                 alignItems="center"
               >
-                <Text
-                  pr="2"
-                >{keyword.content}</Text>
                 <Checkbox
                   isChecked={checkedValues.includes(keyword.content)}
+                  accessibilityLabel={`Elegir ${keyword.content}`}
                   onChange={checked => updateCheckedValues(checked, keyword.content)}
                   value={keyword.content}
-                />
+                >
+                  {keyword.content}
+                </Checkbox>
               </Box>
             ))
           }
         </Modal.Body>
         <Modal.Footer>
           <ButtonWithIcon
-            color="amber.400"
+            color="white"
             focusColor="amber.600"
             dir="right"
             onPress={() => action(checkedValues)}

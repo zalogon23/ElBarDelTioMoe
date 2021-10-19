@@ -27,13 +27,7 @@ function Bigcard({
     >
       <Box
         pointerEvents="none"
-        style={{
-          shadowColor: "#0005",
-          shadowOffset: {
-            width: -6,
-            height: 6
-          }
-        }}
+        shadow={3}
         w={[220, 400]}
         bg="amber.600"
         rounded="md"

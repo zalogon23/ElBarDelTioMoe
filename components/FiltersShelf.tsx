@@ -24,6 +24,7 @@ function FiltersShelf({
       flexDir="row"
       w="100%"
       flexWrap="wrap"
+      shadow={3}
       alignItems="center"
       p={4}
       pb={1}

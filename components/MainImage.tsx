@@ -10,13 +10,7 @@ interface Props {
 export default function BeverageImage({ image, alt, ...props }: Props): ReactElement {
   return (
     <Box
-      style={{
-        shadowColor: "#0005",
-        shadowOffset: {
-          width: -5,
-          height: 5
-        }
-      }}
+      shadow={3}
       rounded="md"
       alignSelf="center"
       w="100%"

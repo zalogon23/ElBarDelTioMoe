@@ -20,13 +20,7 @@ function Note({
       py="6"
       px="4"
       w="100%"
-      style={shadow ? {
-        shadowColor: "#0005",
-        shadowOffset: {
-          width: -6,
-          height: 6
-        }
-      } : {}}
+      shadow={shadow ? 3 : 0}
       {...props}
     >
       {children}

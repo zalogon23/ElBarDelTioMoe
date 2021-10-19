@@ -25,19 +25,7 @@ function SmallCard({
       onPress={onPress}
     >
       <Box
-        style={
-          shadow
-            ?
-            {
-              shadowColor: "#0005",
-              shadowOffset: {
-                width: -6,
-                height: 6
-              }
-            }
-            :
-            {}
-        }
+        shadow={shadow ? 3 : 0}
         w={[160, 200]}
         bg="amber.600"
         rounded="md"

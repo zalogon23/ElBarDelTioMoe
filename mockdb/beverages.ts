@@ -17,21 +17,21 @@ const beverages: BeverageType[] = [
         id: "instruction-1",
         content: "Hervir huevo peludo",
         order: 0,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-1"
       },
       {
         id: "instruction-2",
         content: "Pelarlo",
         order: 1,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-1"
       },
       {
         id: "instruction-3",
         content: "Comerlo",
         order: 2,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-1"
       },
     ],
@@ -76,21 +76,21 @@ const beverages: BeverageType[] = [
         id: "instruction-1",
         content: "Hervir huevo peludo",
         order: 0,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-2"
       },
       {
         id: "instruction-2",
         content: "Pelarlo",
         order: 1,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-2"
       },
       {
         id: "instruction-3",
         content: "Comerlo",
         order: 2,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-2"
       },
     ],
@@ -134,21 +134,21 @@ const beverages: BeverageType[] = [
         id: "instruction-1",
         content: "Hervir huevo peludo",
         order: 0,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-3"
       },
       {
         id: "instruction-2",
         content: "Pelarlo",
         order: 1,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-3"
       },
       {
         id: "instruction-3",
         content: "Comerlo",
         order: 2,
-        createdAt: new Date(),
+        createdAt: JSON.stringify(new Date()),
         beverage: "beverage-3"
       },
     ],
