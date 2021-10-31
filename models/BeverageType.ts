@@ -7,8 +7,13 @@ export default interface BeverageType {
   name: string,
   description: string,
   image: string,
-  native: boolean,
+  native: boolean
+}
+
+interface BeverageCompleteType extends BeverageType {
   ingredients: IngredientType[],
   instructions: InstructionType[],
   keywords: KeywordType[]
 }
+
+export { BeverageCompleteType }

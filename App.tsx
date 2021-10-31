@@ -17,6 +17,8 @@ import FiltersProvider from './contexts/FiltersContext';
 import Profile from './screens/Profile';
 import UserProvider from './contexts/UserContext';
 import Lab from './screens/Lab';
+import { ApolloProvider } from '@apollo/client';
+import client from './lib/apolloClient';
 type NavigationProps = NativeStackScreenProps<ScreensParamsList, ScreensType>
 
 export default function App() {
@@ -30,49 +32,51 @@ export default function App() {
   const { Navigator, Screen } = createNativeStackNavigator<ScreensParamsList>();
 
   return (
-    <SafeAreaProvider>
-      <NativeBaseProvider>
-        <UserProvider>
-          <BeveragesProvider>
-            <FiltersProvider>
-              <NavigationContainer>
-                <Navigator>
-                  <Screen
-                    options={getHomeOptions}
-                    name="Home"
-                    component={Home}
-                  />
-                  <Screen
-                    name="Perfil"
-                    component={Profile}
-                    options={getHeaderOptions}
-                  />
-                  <Screen
-                    name="Bebidas"
-                    component={Beverages}
-                    options={getHeaderOptions}
-                  />
-                  <Screen
-                    name="Bar"
-                    component={Bar}
-                    options={getHeaderOptions}
-                  />
-                  <Screen
-                    name="Bebida"
-                    component={Beverage}
-                    options={getHeaderOptions}
-                  /><Screen
-                    name="Lab"
-                    component={Lab}
-                    options={getHeaderOptions}
-                  />
-                </Navigator>
-              </NavigationContainer>
-            </FiltersProvider>
-          </BeveragesProvider>
-        </UserProvider>
-      </NativeBaseProvider>
-    </SafeAreaProvider>
+    <ApolloProvider client={client}>
+      <SafeAreaProvider>
+        <NativeBaseProvider>
+          <UserProvider>
+            <BeveragesProvider>
+              <FiltersProvider>
+                <NavigationContainer>
+                  <Navigator>
+                    <Screen
+                      options={getHomeOptions}
+                      name="Home"
+                      component={Home}
+                    />
+                    <Screen
+                      name="Perfil"
+                      component={Profile}
+                      options={getHeaderOptions}
+                    />
+                    <Screen
+                      name="Bebidas"
+                      component={Beverages}
+                      options={getHeaderOptions}
+                    />
+                    <Screen
+                      name="Bar"
+                      component={Bar}
+                      options={getHeaderOptions}
+                    />
+                    <Screen
+                      name="Bebida"
+                      component={Beverage}
+                      options={getHeaderOptions}
+                    /><Screen
+                      name="Lab"
+                      component={Lab}
+                      options={getHeaderOptions}
+                    />
+                  </Navigator>
+                </NavigationContainer>
+              </FiltersProvider>
+            </BeveragesProvider>
+          </UserProvider>
+        </NativeBaseProvider>
+      </SafeAreaProvider>
+    </ApolloProvider>
   )
 }
 

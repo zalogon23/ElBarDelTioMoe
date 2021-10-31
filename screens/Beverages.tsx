@@ -20,7 +20,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
   const paramsFilters = route?.params?.filters ?? [];
   const [filters, setFilters] = useState(paramsFilters);
 
-  const { applyFilters, beverages, isLoading } = useContext(beveragesContext)
+  const { applyFilters, filteredBeverages, isLoading } = useContext(beveragesContext)
   const [showFilters, setShowFilters] = useState(false);
   const { filters: filterOptions } = useContext(filtersContext)
 
@@ -71,7 +71,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
               >
                 {
 
-                  beverages.map(data => (
+                  filteredBeverages.map(data => (
                     <Bigcard
                       key={data.id}
                       onPress={() => {
