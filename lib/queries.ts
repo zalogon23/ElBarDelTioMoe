@@ -21,6 +21,13 @@ const queries = {
       id beverageId keywordId
     }
   }
+  `,
+  getSelf: gql`
+  query{
+    self{
+      id username description password avatar
+    }
+  }
   `
 }
 

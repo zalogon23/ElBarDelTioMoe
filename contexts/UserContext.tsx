@@ -1,6 +1,7 @@
 import React, { createContext, ReactElement, useEffect, useState } from "react";
 import UserType from "../models/UserType";
-import user from "../mockdb/user"
+import client from "../lib/apolloClient";
+import queries from "../lib/queries";
 
 interface Props {
   children: ReactElement | ReactElement[]
@@ -19,12 +20,10 @@ export default function UserProvider({ children }: Props) {
   useEffect(() => {
     (async () => {
       const asyncUser = await getUser()
-      setTimeout(() => {
-        setReceivedUser(() => {
-          setIsLoading(false)
-          return asyncUser
-        })
-      }, 700)
+      setReceivedUser(() => {
+        setIsLoading(false)
+        return asyncUser
+      })
     })()
   }, [])
   return (
@@ -39,7 +38,10 @@ export default function UserProvider({ children }: Props) {
   )
 
   async function getUser(): Promise<UserType | null> {
-    return user
+    const result = await client.query({
+      query: queries.getSelf
+    });
+    return result.data?.self as UserType | null
   }
 }
 
