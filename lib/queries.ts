@@ -28,6 +28,13 @@ const queries = {
       id username description password avatar
     }
   }
+  `,
+  createUser: gql`
+  mutation($user: UserInput!){
+    createUser(user: $user){
+      id username password description avatar
+    }
+  }
   `
 }
 

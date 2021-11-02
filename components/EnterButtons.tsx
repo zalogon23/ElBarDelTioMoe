@@ -5,11 +5,13 @@ import ButtonWithIcon from './ButtonWithIcon';
 import Loading from './Loading';
 
 interface Props {
-  enter: () => void
+  enter: () => void,
+  auth: () => void
 }
 
 function EnterButtons({
-  enter
+  enter,
+  auth
 }: Props): ReactElement {
   const { isLoading, user } = useContext(userContext)
   return (
@@ -25,6 +27,7 @@ function EnterButtons({
                 ?
                 <ButtonWithIcon
                   shadow
+                  size="small"
                   dir="right"
                   name="arrow-right"
                   color="white"
@@ -39,19 +42,21 @@ function EnterButtons({
                 <>
                   <ButtonWithIcon
                     shadow
+                    size="small"
                     dir="right"
                     name="key"
                     color="white"
                     py="2"
                     mt="8"
                     focusColor="amber.300"
-                    onPress={() => { }}
+                    onPress={auth}
                   >
                     Loguearme
                   </ButtonWithIcon>
 
                   <ButtonWithIcon
                     shadow
+                    size="small"
                     dir="right"
                     name="arrow-right"
                     color="white"

@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Box, Button, HStack } from 'native-base'
 import Container from '../components/Container';
 import ButtonWithIcon from '../components/ButtonWithIcon';
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import IconButton from "../components/IconButton";
 import Background from '../components/Background';
 import Heading from '../components/Heading';
@@ -10,11 +10,13 @@ import Text from '../components/Text';
 import ScreensParamsList from '../lib/screens';
 import SafeAreaView from '../components/SafeAreaView';
 import EnterButtons from '../components/EnterButtons';
+import AuthModal from '../components/AuthModal';
 const background = require("../assets/background.jpg");
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Home">
 
 function Home({ navigation }: Props): ReactElement {
+  const [isOpenAuth, setIsOpenAuth] = useState(false);
   return (
     <>
       <Background
@@ -22,6 +24,10 @@ function Home({ navigation }: Props): ReactElement {
         alt="Bar al anochecer con un cielo estrellado."
       />
       <SafeAreaView>
+        <AuthModal
+          isOpen={isOpenAuth}
+          onClose={() => setIsOpenAuth(false)}
+        />
         <Container
           mx="auto"
           alignItems="center"
@@ -62,6 +68,7 @@ function Home({ navigation }: Props): ReactElement {
                 navigation.navigate("Bar");
               }
             }
+            auth={() => setIsOpenAuth(true)}
           />
         </Container>
       </SafeAreaView>
