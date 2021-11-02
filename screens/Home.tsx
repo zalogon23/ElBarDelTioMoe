@@ -9,6 +9,7 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import ScreensParamsList from '../lib/screens';
 import SafeAreaView from '../components/SafeAreaView';
+import EnterButtons from '../components/EnterButtons';
 const background = require("../assets/background.jpg");
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Home">
@@ -55,21 +56,13 @@ function Home({ navigation }: Props): ReactElement {
             <CircleIconButton />
             <CircleIconButton />
           </HStack>
-          <ButtonWithIcon
-            shadow
-            dir="right"
-            name="arrow-right"
-            color="white"
-            py="2"
-            mt="8"
-            focusColor="amber.300"
-            onPress={() => {
-              navigation.navigate("Bar");
-            }}
-          >
-            Entrar
-          </ButtonWithIcon>
-
+          <EnterButtons
+            enter={
+              () => {
+                navigation.navigate("Bar");
+              }
+            }
+          />
         </Container>
       </SafeAreaView>
     </>

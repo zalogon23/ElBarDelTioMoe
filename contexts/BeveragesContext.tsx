@@ -2,7 +2,6 @@ import gql from "graphql-tag";
 import React, { createContext, ReactElement, useEffect, useState } from "react"
 import client from "../lib/apolloClient";
 import queries from "../lib/queries";
-import beveragesDB from "../mockdb/beverages";
 import BeverageType, { BeverageCompleteType } from "../models/BeverageType";
 import ClassificationType from "../models/ClassificationType";
 import KeywordType from "../models/KeywordType";
