@@ -10,8 +10,8 @@ import KeywordType from "../models/KeywordType";
 interface BeverageProviderProps {
   applyFilters: (filters: string[]) => void,
   isLoading: boolean,
-  beverages: BeverageType[],
-  filteredBeverages: BeverageType[]
+  beverages: BeverageCompleteType[],
+  filteredBeverages: BeverageCompleteType[]
 }
 
 const beveragesContext = createContext({} as BeverageProviderProps);

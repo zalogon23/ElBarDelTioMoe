@@ -1,6 +1,7 @@
 import { Box, Image } from 'native-base'
 import React, { ReactElement } from 'react'
 import { TouchableOpacity } from 'react-native'
+import ImagePlaceholder from './ImagePlaceholder'
 import Text from './Text'
 
 export interface SmallCardProps {
@@ -37,6 +38,7 @@ function SmallCard({
           h={[100, 160]}
           src={image}
           alt={name}
+          fallbackElement={<ImagePlaceholder size="small" />}
         />
         <Box
           p={4}

@@ -1,6 +1,6 @@
-import BeverageType from "../models/BeverageType";
+import { BeverageCompleteType } from "../models/BeverageType";
 
-const beverages: BeverageType[] = [
+const beverages: BeverageCompleteType[] = [
   {
     id: "beverage-1",
     name: "Mojito de Cancun",

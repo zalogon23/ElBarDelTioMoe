@@ -2,6 +2,7 @@ import { Box, Image } from 'native-base'
 import React, { ReactElement } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Heading from './Heading'
+import ImagePlaceholder from './ImagePlaceholder'
 import Text from './Text'
 
 export interface BigCardProps {
@@ -37,6 +38,7 @@ function Bigcard({
         <Image
           w={[220, 400]}
           h={[200, 320]}
+          fallbackElement={<ImagePlaceholder size="big" />}
           src={image}
           alt={description}
         />
