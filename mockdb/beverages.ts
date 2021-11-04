@@ -1,182 +1,69 @@
-import { BeverageCompleteType } from "../models/BeverageType";
+import { BeverageGraphType } from "../models/BeverageType";
 
-const beverages: BeverageCompleteType[] = [
+const beverages: BeverageGraphType[] = [
   {
-    id: "beverage-1",
-    name: "Mojito de Cancun",
-    description: "Bebida aprodisíaca con notas de Lavanda. Aromatizada para que disfrutes del zaoco mundial.",
-    image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
-    keywords: [
+    "id": "61770d68784b13cb7b945a83",
+    "name": "Bebida Lactea",
+    "description": "Tiene alto contenido en leche",
+    "image": "https://www.galletaspolen.com/wp-content/uploads/2020/03/leche-con-galletas-525x350.jpeg",
+    "native": true,
+    "instructions": [
       {
-        id: "keyword-1",
-        content: "clasicos"
+        "id": "618426792a0f5003032aec96",
+        "content": "Cocer la leche a fuego lento",
+        "order": 0,
+        "beverageId": "61770d68784b13cb7b945a83"
+      },
+      {
+        "id": "618426792a0f5003032aec97",
+        "content": "Agregarle azucar",
+        "order": 1,
+        "beverageId": "61770d68784b13cb7b945a83"
       }
     ],
-    instructions: [
+    "ingredients": [
       {
-        id: "instruction-1",
-        content: "Hervir huevo peludo",
-        order: 0,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-1"
+        "id": "61830b242249702f32bbbc20",
+        "product": "Leche",
+        "measure": "Trago",
+        "quantity": 1.5,
+        "beverageId": "61770d68784b13cb7b945a83"
       },
       {
-        id: "instruction-2",
-        content: "Pelarlo",
-        order: 1,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-1"
-      },
-      {
-        id: "instruction-3",
-        content: "Comerlo",
-        order: 2,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-1"
-      },
-    ],
-    native: true,
-    ingredients: [
-      {
-        id: "ingredient-1",
-        product: "Menta",
-        measure: "gramos",
-        quantity: 10,
-        beverage: "beverage-1"
-      },
-      {
-        id: "ingredient-2",
-        product: "Petalos de Rosa",
-        measure: "petalos",
-        quantity: 3,
-        beverage: "beverage-1"
-      },
-      {
-        id: "ingredient-3",
-        product: "Azucar",
-        measure: "cucharaditas",
-        quantity: 2,
-        beverage: "beverage-1"
-      },
-    ]
-  },
-  {
-    id: "beverage-2",
-    name: "Mojito de Cancun",
-    description: "Bebida aprodisíaca con notas de Lavanda. Aromatizada para que disfrutes del zaoco mundial.",
-    image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
-    keywords: [
-      {
-        id: "keyword-1",
-        content: "clasicos"
+        "id": "61830b242249702f32bbbc21",
+        "product": "Canela",
+        "measure": "Ramita",
+        "quantity": 1,
+        "beverageId": "61770d68784b13cb7b945a83"
       }
     ],
-    instructions: [
+    "keywords": [
       {
-        id: "instruction-1",
-        content: "Hervir huevo peludo",
-        order: 0,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-2"
-      },
-      {
-        id: "instruction-2",
-        content: "Pelarlo",
-        order: 1,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-2"
-      },
-      {
-        id: "instruction-3",
-        content: "Comerlo",
-        order: 2,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-2"
-      },
-    ],
-    native: true,
-    ingredients: [
-      {
-        id: "ingredient-1",
-        product: "Menta",
-        measure: "gramos",
-        quantity: 10,
-        beverage: "beverage-2"
-      },
-      {
-        id: "ingredient-2",
-        product: "Petalos de Rosa",
-        measure: "petalos",
-        quantity: 3,
-        beverage: "beverage-2"
-      },
-      {
-        id: "ingredient-3",
-        product: "Azucar",
-        measure: "cucharaditas",
-        quantity: 2,
-        beverage: "beverage-2"
-      },
+        "id": "61770d9a784b13cb7b945a84",
+        "content": "clasicos"
+      }
     ]
   },
   {
-    id: "beverage-3",
-    name: "Mojito de Cancun",
-    description: "Bebida aprodisíaca con notas de Lavanda. Aromatizada para que disfrutes del zaoco mundial.",
-    image: "https://i0.wp.com/hornomx.com/wp-content/uploads/2020/12/hot-chocolate-recipe-hornomx-side.jpg?resize=1024%2C683&ssl=1",
-    keywords: [{
-      id: "keyword-1",
-      content: "monarquicos"
-    }
-    ],
-    instructions: [
-      {
-        id: "instruction-1",
-        content: "Hervir huevo peludo",
-        order: 0,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-3"
-      },
-      {
-        id: "instruction-2",
-        content: "Pelarlo",
-        order: 1,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-3"
-      },
-      {
-        id: "instruction-3",
-        content: "Comerlo",
-        order: 2,
-        createdAt: JSON.stringify(new Date()),
-        beverage: "beverage-3"
-      },
-    ],
-    native: true,
-    ingredients: [
-      {
-        id: "ingredient-1",
-        product: "Menta",
-        measure: "gramos",
-        quantity: 10,
-        beverage: "beverage-3"
-      },
-      {
-        id: "ingredient-2",
-        product: "Petalos de Rosa",
-        measure: "petalos",
-        quantity: 3,
-        beverage: "beverage-3"
-      },
-      {
-        id: "ingredient-3",
-        product: "Azucar",
-        measure: "cucharaditas",
-        quantity: 2,
-        beverage: "beverage-3"
-      },
-    ]
+    "id": "617ef8db7505e9a8c0e34419",
+    "name": "Bebida con Queso",
+    "description": "Tiene alto contenido en quesos",
+    "image": "https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/te_queso.jpg",
+    "native": true,
+    "instructions": [],
+    "ingredients": [],
+    "keywords": []
   },
+  {
+    "id": "618311e502440d771fd553a8",
+    "name": "Bebida con Acerrin",
+    "description": "Tiene alto contenido en maderas",
+    "image": "https://docplayer.es/docs-images/77/76565764/images/20-1.jpg",
+    "native": true,
+    "instructions": [],
+    "ingredients": [],
+    "keywords": []
+  }
 ]
 
 export default beverages;

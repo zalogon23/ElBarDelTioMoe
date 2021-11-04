@@ -3,5 +3,5 @@ export default interface IngredientType {
   product: string,
   quantity: number,
   measure: string,
-  beverage: string
+  beverageId: string
 }

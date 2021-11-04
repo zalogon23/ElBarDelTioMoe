@@ -4,7 +4,16 @@ const queries = {
   getBeverages: gql`
   query{
     beverages{
-      id name description image native
+      id name description image native 
+      instructions{
+        id content order beverageId
+      }
+      ingredients{
+        id product measure quantity beverageId
+      }
+      keywords{
+        id content
+      }
     }
   }
   `,

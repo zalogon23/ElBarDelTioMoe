@@ -10,10 +10,10 @@ export default interface BeverageType {
   native: boolean
 }
 
-interface BeverageCompleteType extends BeverageType {
+interface BeverageGraphType extends BeverageType {
   ingredients: IngredientType[],
   instructions: InstructionType[],
   keywords: KeywordType[]
 }
 
-export { BeverageCompleteType }
+export { BeverageGraphType }
