@@ -39,4 +39,10 @@ export default class UserHandler {
       return user
     }
   }
+  static async GetUser(): Promise<UserType | null> {
+    const result = await client.query({
+      query: queries.getSelf
+    });
+    return result.data?.self as UserType | null
+  }
 }

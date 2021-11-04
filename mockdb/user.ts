@@ -23,22 +23,19 @@ const user: UserType = {
           id: "instruction-1",
           content: "Hervir huevo peludo",
           order: 0,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "instruction-2",
           content: "Pelarlo",
           order: 1,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "instruction-3",
           content: "Comerlo",
           order: 2,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
       ],
       native: true,
@@ -48,21 +45,21 @@ const user: UserType = {
           product: "Menta",
           measure: "gramos",
           quantity: 10,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "ingredient-2",
           product: "Petalos de Rosa",
           measure: "petalos",
           quantity: 3,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "ingredient-3",
           product: "Azucar",
           measure: "cucharaditas",
           quantity: 2,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
       ]
     },
@@ -82,22 +79,19 @@ const user: UserType = {
           id: "instruction-1",
           content: "Hervir huevo peludo",
           order: 0,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "instruction-2",
           content: "Pelarlo",
           order: 1,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "instruction-3",
           content: "Comerlo",
           order: 2,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
       ],
       native: true,
@@ -107,21 +101,21 @@ const user: UserType = {
           product: "Menta",
           measure: "gramos",
           quantity: 10,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "ingredient-2",
           product: "Petalos de Rosa",
           measure: "petalos",
           quantity: 3,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "ingredient-3",
           product: "Azucar",
           measure: "cucharaditas",
           quantity: 2,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
       ]
     },
@@ -141,22 +135,19 @@ const user: UserType = {
           id: "instruction-1",
           content: "Hervir huevo peludo",
           order: 0,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "instruction-2",
           content: "Pelarlo",
           order: 1,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "instruction-3",
           content: "Comerlo",
           order: 2,
-          createdAt: JSON.stringify(new Date()),
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
       ],
       native: true,
@@ -166,21 +157,21 @@ const user: UserType = {
           product: "Menta",
           measure: "gramos",
           quantity: 10,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "ingredient-2",
           product: "Petalos de Rosa",
           measure: "petalos",
           quantity: 3,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
         {
           id: "ingredient-3",
           product: "Azucar",
           measure: "cucharaditas",
           quantity: 2,
-          beverage: "beverage-1"
+          beverageId: "beverage-1"
         },
       ]
     }
@@ -196,9 +187,8 @@ const user: UserType = {
         {
           id: "instruction-10",
           content: "Abrir lata",
-          createdAt: JSON.stringify(new Date()),
           order: 0,
-          beverage: "custom-beverage.-1"
+          beverageId: "custom-beverage.-1"
         }
       ],
       ingredients: [
@@ -207,7 +197,7 @@ const user: UserType = {
           product: "Coca Cola",
           measure: "lata",
           quantity: 1,
-          beverage: "custom-beverage-1"
+          beverageId: "custom-beverage-1"
         }
       ],
       keywords: [

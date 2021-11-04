@@ -1,5 +1,5 @@
 
-import BeverageType from "./BeverageType";
+import { BeverageGraphType } from "./BeverageType";
 
 export default interface UserType {
   id: string,
@@ -7,6 +7,6 @@ export default interface UserType {
   password: string,
   avatar: string,
   description: string,
-  favoriteBeverages: BeverageType[],
-  createdBeverages: BeverageType[],
+  favoriteBeverages: BeverageGraphType[],
+  createdBeverages: BeverageGraphType[],
 }

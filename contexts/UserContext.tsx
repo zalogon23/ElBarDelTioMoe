@@ -1,7 +1,6 @@
 import React, { createContext, ReactElement, useEffect, useState } from "react";
 import UserType from "../models/UserType";
-import client from "../lib/apolloClient";
-import queries from "../lib/queries";
+import UserHandler from "../lib/UserHandler";
 
 interface Props {
   children: ReactElement | ReactElement[]
@@ -19,10 +18,10 @@ export default function UserProvider({ children }: Props) {
   const [receivedUser, setReceivedUser] = useState(null as UserType | null);
   useEffect(() => {
     (async () => {
-      const asyncUser = await getUser()
+      const user = await UserHandler.GetUser();
       setReceivedUser(() => {
         setIsLoading(false)
-        return asyncUser
+        return user
       })
     })()
   }, [])
@@ -36,13 +35,6 @@ export default function UserProvider({ children }: Props) {
       {children}
     </userContext.Provider>
   )
-
-  async function getUser(): Promise<UserType | null> {
-    const result = await client.query({
-      query: queries.getSelf
-    });
-    return result.data?.self as UserType | null
-  }
 }
 
 export { userContext }
