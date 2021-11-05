@@ -8,6 +8,7 @@ interface Props {
 
 interface UserContextProps {
   user: UserType | null,
+  setUser: React.Dispatch<React.SetStateAction<UserType | null>>,
   isLoading: boolean
 }
 
@@ -29,6 +30,7 @@ export default function UserProvider({ children }: Props) {
     <userContext.Provider
       value={{
         user: receivedUser,
+        setUser: setReceivedUser,
         isLoading
       }}
     >

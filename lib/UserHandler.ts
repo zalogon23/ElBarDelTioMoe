@@ -3,7 +3,7 @@ import client, { serverUrl } from "./apolloClient";
 import queries from "./queries";
 
 export default class UserHandler {
-  static async Login(username: string, password: string) {
+  static async Login(username: string, password: string, setUser: (user: UserType) => void) {
     const json = await fetch(serverUrl + "/login", {
       headers: {
         "Content-Type": "application/json",
@@ -15,9 +15,8 @@ export default class UserHandler {
     const result = await json.json() as UserType | null;
     if (result === null) {
       return null
-    } else {
-      return result;
     }
+    setUser(result);
   }
   static async Register(username: string, password: string) {
     if (password.length < 8) return null;

@@ -1,10 +1,12 @@
 import { Input, Modal } from 'native-base'
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import styling from '../lib/styling'
 import ButtonWithIcon from './ButtonWithIcon'
 import Heading from './Heading'
 import FormControl from "../components/FormControl"
 import UserHandler from '../lib/UserHandler'
+import { userContext } from '../contexts/UserContext'
+
 
 interface Props {
   isOpen: boolean,
@@ -12,20 +14,20 @@ interface Props {
 }
 
 function AuthModal({ isOpen, ...props }: Props): ReactElement {
+  const { setUser } = useContext(userContext);
   const [authType, setAuthType] = useState("login" as "login" | "register");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   useEffect(() => {
-    if (!isOpen) {
-      setTimeout(() => {
-        setAuthType("login");
-      }, 150)
+    return () => {
+      setTimeout(() => setAuthType("login"), 150);
     }
   }, [isOpen])
   return (
     <Modal
+      size="xl"
       isOpen={isOpen}
       {...props}
     >
@@ -54,16 +56,18 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   onChange={(e: any) => setLoginPassword(e.target.value)}
                 />
               </Modal.Body>
-              <Modal.Footer>
+              <Modal.Footer
+                flexDir="row"
+              >
                 <ButtonWithIcon
                   size="small"
+                  mr="2"
                   colorScheme="amber"
                   focusColor="amber.400"
                   name="question"
                   color="white"
                   dir="right"
                   onPress={() => setAuthType("register")}
-                  mr="2"
                 >
                   Registrarme
                 </ButtonWithIcon>
@@ -74,7 +78,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   name="send"
                   color="white"
                   dir="right"
-                  onPress={() => UserHandler.Login(loginUsername, loginPassword)}
+                  onPress={() => UserHandler.Login(loginUsername, loginPassword, setUser)}
                 >
                   Enviar
                 </ButtonWithIcon>

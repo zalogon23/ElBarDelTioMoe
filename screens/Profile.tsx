@@ -73,7 +73,7 @@ function Profile({
                   mb="5"
                 >Bebidas Favoritas</Heading>
                 <CardsSlider>
-                  {getBeveragesCards(user.favoriteBeverages)}
+                  {/* {getBeveragesCards(user.favoriteBeverages)} */}
                 </CardsSlider>
               </Note>
               <Note
@@ -87,7 +87,7 @@ function Profile({
                   mb="5"
                 >Bebidas Creadas</Heading>
                 <CardsSlider>
-                  {getBeveragesCards(user.createdBeverages)}
+                  {/* {getBeveragesCards(user.createdBeverages)} */}
                 </CardsSlider>
               </Note>
             </Container>
