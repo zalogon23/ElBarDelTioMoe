@@ -4,6 +4,8 @@ import queries from "./queries";
 
 export default class UserHandler {
   static async Login(username: string, password: string, setUser: (user: UserType) => void) {
+    alert(username);
+    alert(password);
     const json = await fetch(serverUrl + "/login", {
       headers: {
         "Content-Type": "application/json",

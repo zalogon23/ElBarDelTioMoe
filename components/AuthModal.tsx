@@ -45,7 +45,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   helper=""
                   errorMessage=""
                   value={loginUsername}
-                  onChange={(e: any) => setLoginUsername(e.target.value)}
+                  onChangeText={(text: string) => setLoginUsername(text)}
                 />
                 <FormControl
                   label="Contraseña"
@@ -53,7 +53,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   helper=""
                   errorMessage=""
                   value={loginPassword}
-                  onChange={(e: any) => setLoginPassword(e.target.value)}
+                  onChangeText={(text: string) => setLoginPassword(text)}
                 />
               </Modal.Body>
               <Modal.Footer
@@ -97,7 +97,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   label="Nombre de usuario"
                   helper="Tu mejor apodo!"
                   value={registerUsername}
-                  onChange={(e: any) => setRegisterUsername(e.target.value)}
+                  onChangeText={(text: string) => setRegisterUsername(text)}
                   errorMessage=""
                 />
                 <FormControl
@@ -106,7 +106,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   errorMessage=""
                   type="password"
                   value={registerPassword}
-                  onChange={(e: any) => setRegisterPassword(e.target.value)}
+                  onChangeText={(text: string) => setRegisterPassword(text)}
                 />
               </Modal.Body>
               <Modal.Footer>
