@@ -12,7 +12,7 @@ import MainImage from "../components/MainImage"
 import Text from '../components/Text'
 import SmallCard from '../components/SmallCard'
 import UserType from '../models/UserType'
-import BeverageType from '../models/BeverageType'
+import BeverageType, { BeverageGraphType } from '../models/BeverageType'
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Perfil">
 
@@ -73,7 +73,7 @@ function Profile({
                   mb="5"
                 >Bebidas Favoritas</Heading>
                 <CardsSlider>
-                  {/* {getBeveragesCards(user.favoriteBeverages)} */}
+                  {getBeveragesCards(user.favoriteBeverages)}
                 </CardsSlider>
               </Note>
               <Note
@@ -87,7 +87,7 @@ function Profile({
                   mb="5"
                 >Bebidas Creadas</Heading>
                 <CardsSlider>
-                  {/* {getBeveragesCards(user.createdBeverages)} */}
+                  {getBeveragesCards(user.createdBeverages)}
                 </CardsSlider>
               </Note>
             </Container>
@@ -96,7 +96,7 @@ function Profile({
     </>
   )
 
-  function getBeveragesCards(beverages: BeverageType[]): ReactElement[] {
+  function getBeveragesCards(beverages: BeverageGraphType[]): ReactElement[] {
     const cards = beverages.map(bev => (
       <SmallCard
         shadow

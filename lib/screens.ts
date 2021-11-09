@@ -1,4 +1,4 @@
-import BeverageType from "../models/BeverageType";
+import BeverageType, { BeverageGraphType } from "../models/BeverageType";
 
 type ScreensParamsList = {
   Home: undefined,
@@ -7,7 +7,7 @@ type ScreensParamsList = {
     filters: string[]
   },
   Bebida: {
-    data: BeverageType
+    data: BeverageGraphType
   },
   Perfil: undefined,
   Lab: undefined

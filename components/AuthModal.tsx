@@ -1,10 +1,8 @@
-import { Input, Modal } from 'native-base'
+import { Modal } from 'native-base'
 import React, { ReactElement, useContext, useEffect, useState } from 'react'
-import styling from '../lib/styling'
 import ButtonWithIcon from './ButtonWithIcon'
 import Heading from './Heading'
 import FormControl from "../components/FormControl"
-import UserHandler from '../lib/UserHandler'
 import { userContext } from '../contexts/UserContext'
 
 
@@ -14,7 +12,7 @@ interface Props {
 }
 
 function AuthModal({ isOpen, ...props }: Props): ReactElement {
-  const { setUser } = useContext(userContext);
+  const { userHandler } = useContext(userContext);
   const [authType, setAuthType] = useState("login" as "login" | "register");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -78,7 +76,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   name="send"
                   color="white"
                   dir="right"
-                  onPress={() => UserHandler.Login(loginUsername, loginPassword, setUser)}
+                  onPress={() => userHandler.Login(loginUsername, loginPassword)}
                 >
                   Enviar
                 </ButtonWithIcon>
@@ -117,7 +115,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   name="send"
                   color="white"
                   dir="right"
-                  onPress={() => UserHandler.Register(registerUsername, registerPassword)}
+                  onPress={() => userHandler.Register(registerUsername, registerPassword)}
                 >
                   Enviar
                 </ButtonWithIcon>

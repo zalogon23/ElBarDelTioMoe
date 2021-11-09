@@ -35,13 +35,33 @@ const queries = {
   query{
     self{
       id username description password avatar
+      createdBeverages{
+        id name description image native 
+        ingredients{id product quantity measure beverageId} 
+        instructions{id content order beverageId} keywords{id content}
+      }
+      favoriteBeverages{
+        id name description image native 
+        ingredients{id product quantity measure beverageId} 
+        instructions{id content order beverageId} keywords{id content}
+      }
     }
   }
   `,
   createUser: gql`
   mutation($user: UserInput!){
     createUser(user: $user){
-      id username password description avatar
+      id username description password avatar
+      createdBeverages{
+        id name description image native 
+        ingredients{id product quantity measure beverageId} 
+        instructions{id content order beverageId} keywords{id content}
+      }
+      favoriteBeverages{
+        id name description image native 
+        ingredients{id product quantity measure beverageId} 
+        instructions{id content order beverageId} keywords{id content}
+      }
     }
   }
   `

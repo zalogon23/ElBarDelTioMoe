@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { Box, Image } from "native-base";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 interface Props {
   image: string,
@@ -23,6 +24,7 @@ export default function BeverageImage({ image, alt, ...props }: Props): ReactEle
         rounded="md"
         alt={alt}
         source={{ uri: image }}
+        fallbackElement={<ImagePlaceholder size="big" w="100%" h={[180, 320]} />}
       />
     </Box>
   )

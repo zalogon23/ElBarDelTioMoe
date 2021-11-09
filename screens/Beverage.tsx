@@ -11,7 +11,7 @@ import FiltersShelf from '../components/FiltersShelf';
 import Text from '../components/Text';
 import Note from '../components/Note';
 import LineCardStack from '../components/LineCardStack';
-import BeverageType from '../models/BeverageType';
+import BeverageType, { BeverageGraphType } from '../models/BeverageType';
 import MainImage from "../components/MainImage"
 import { Box } from 'native-base';
 
@@ -88,7 +88,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
   )
 }
 
-function Ingredients({ beverage }: { beverage: BeverageType }): ReactElement {
+function Ingredients({ beverage }: { beverage: BeverageGraphType }): ReactElement {
   return (
     <>
       {
