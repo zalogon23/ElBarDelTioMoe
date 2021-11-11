@@ -25,6 +25,7 @@ function Home({ navigation }: Props): ReactElement {
       />
       <SafeAreaView>
         <AuthModal
+          setIsOpen={setIsOpenAuth}
           isOpen={isOpenAuth}
           onClose={() => setIsOpenAuth(false)}
         />

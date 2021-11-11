@@ -4,15 +4,20 @@ import ButtonWithIcon from './ButtonWithIcon'
 import Heading from './Heading'
 import FormControl from "../components/FormControl"
 import { userContext } from '../contexts/UserContext'
+import client, { serverUrl } from '../lib/apolloClient'
+import queries from '../lib/queries'
+import { TokensLoginDto } from '../models/Tokens'
+import UserType from '../models/UserType'
 
 
 interface Props {
   isOpen: boolean,
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   [props: string]: any
 }
 
-function AuthModal({ isOpen, ...props }: Props): ReactElement {
-  const { userHandler } = useContext(userContext);
+function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
+  const { setUser } = useContext(userContext);
   const [authType, setAuthType] = useState("login" as "login" | "register");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -76,7 +81,14 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   name="send"
                   color="white"
                   dir="right"
-                  onPress={() => userHandler.Login(loginUsername, loginPassword)}
+                  onPress={async () => {
+                    const tokens = await login(loginUsername, loginPassword);
+                    if (tokens?.token) {
+                      const user = await getUser(tokens.token);
+                      setUser?.(user);
+                      setIsOpen(false);
+                    }
+                  }}
                 >
                   Enviar
                 </ButtonWithIcon>
@@ -115,7 +127,7 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
                   name="send"
                   color="white"
                   dir="right"
-                  onPress={() => userHandler.Register(registerUsername, registerPassword)}
+                  onPress={() => { }}
                 >
                   Enviar
                 </ButtonWithIcon>
@@ -125,6 +137,32 @@ function AuthModal({ isOpen, ...props }: Props): ReactElement {
       </Modal.Content>
     </Modal>
   )
+  async function login(username: string, password: string): Promise<TokensLoginDto | null> {
+    const result = await fetch(serverUrl + "/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ username: loginUsername, password: loginPassword })
+    });
+    const tokens = await result.json() as TokensLoginDto | null;
+    return tokens;
+  };
 }
+
+async function getUser(token: string): Promise<UserType | null> {
+  const graphResult = await client.query({
+    query: queries.getSelf,
+    context: {
+      headers: {
+        "Authorization": `bearer ${token}`
+      }
+    }
+  });
+  const user = graphResult.data?.self as UserType | null;
+  return user;
+}
+
 
 export default AuthModal
