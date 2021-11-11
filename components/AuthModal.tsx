@@ -86,8 +86,8 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
                     if (tokens?.token) {
                       const user = await getUser(tokens.token);
                       setUser?.(user);
-                      setIsOpen(false);
                     }
+                    setIsOpen(false);
                   }}
                 >
                   Enviar
