@@ -8,6 +8,7 @@ import client, { serverUrl } from '../lib/apolloClient'
 import queries from '../lib/queries'
 import { TokensLoginDto } from '../models/Tokens'
 import UserType from '../models/UserType'
+import { tokensContext } from '../contexts/TokensContext'
 
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
 
 function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
   const { setUser } = useContext(userContext);
+  const { getToken, storeToken, storeRefreshToken } = useContext(tokensContext);
   const [authType, setAuthType] = useState("login" as "login" | "register");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -147,6 +149,10 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
       body: JSON.stringify({ username: loginUsername, password: loginPassword })
     });
     const tokens = await result.json() as TokensLoginDto | null;
+    if (tokens?.token && tokens?.refreshToken) {
+      storeToken(tokens.token);
+      storeRefreshToken(tokens.refreshToken)
+    }
     return tokens;
   };
 }

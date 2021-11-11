@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Box, Button, HStack } from 'native-base'
 import Container from '../components/Container';
 import ButtonWithIcon from '../components/ButtonWithIcon';
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import IconButton from "../components/IconButton";
 import Background from '../components/Background';
 import Heading from '../components/Heading';
@@ -11,12 +11,52 @@ import ScreensParamsList from '../lib/screens';
 import SafeAreaView from '../components/SafeAreaView';
 import EnterButtons from '../components/EnterButtons';
 import AuthModal from '../components/AuthModal';
+import { userContext } from '../contexts/UserContext';
+import { tokensContext } from '../contexts/TokensContext';
+import client, { serverUrl } from '../lib/apolloClient';
+import { TokensLoginDto } from '../models/Tokens';
+import queries from '../lib/queries';
+import UserType from '../models/UserType';
 const background = require("../assets/background.jpg");
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Home">
 
 function Home({ navigation }: Props): ReactElement {
   const [isOpenAuth, setIsOpenAuth] = useState(false);
+  const { setUser, setIsLoading } = useContext(userContext);
+  const { getRefreshToken, storeToken, storeRefreshToken } = useContext(tokensContext);
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const refreshToken = await getRefreshToken();
+      if (refreshToken.length) {
+        const result = await fetch(serverUrl + "/refresh", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({ refreshToken })
+        });
+        const tokens = await result.json() as TokensLoginDto;
+        if (tokens.token && tokens.refreshToken) {
+          storeToken(tokens.token)
+          storeRefreshToken(tokens.refreshToken)
+        }
+        const graphResult = await client.query({
+          query: queries.getSelf,
+          context: {
+            headers: {
+              "Authorization": `bearer ${tokens.token}`
+            }
+          }
+        });
+        const user = graphResult.data?.self as UserType | null;
+        setUser(user);
+      }
+      setIsLoading(false);
+    })()
+  }, [])
   return (
     <>
       <Background
