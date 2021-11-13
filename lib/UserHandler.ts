@@ -6,14 +6,17 @@ import TokensHandler from "./TokensHandler";
 
 class UserHandler {
   _SetUser: React.Dispatch<React.SetStateAction<UserType | null>>;
+  SetIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   Online = false;
   TokensHandler: TokensHandler;
 
   constructor(
     setUser: React.Dispatch<React.SetStateAction<UserType | null>>,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     tokensHandler: TokensHandler
   ) {
     this._SetUser = setUser;
+    this.SetIsLoading = setIsLoading;
     this.TokensHandler = tokensHandler;
   }
   SetUser = (user: UserType | null) => {
@@ -30,10 +33,12 @@ class UserHandler {
     await this.TokensHandler.StoreTokens(tokens);
   };
   InitializeUser = async () => {
+    this.SetIsLoading(true);
     await this.TokensHandler.RefreshTokens();
     const token = await this.TokensHandler.GetToken();
     const user = await this.GetUser(token);
     this.SetUser(user);
+    this.SetIsLoading(false);
   }
   GetTokensLogin = async (username: string, password: string): Promise<TokensLoginDto | null> => {
     const result = await fetch(serverUrl + "/login", {

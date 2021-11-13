@@ -20,13 +20,9 @@ type Props = NativeStackScreenProps<ScreensParamsList, "Home">
 
 function Home({ navigation }: Props): ReactElement {
   const [isOpenAuth, setIsOpenAuth] = useState(false);
-  const { userHandler, setIsLoading } = useContext(sessionContext);
+  const { userHandler } = useContext(sessionContext);
   useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      await userHandler.InitializeUser();
-      setIsLoading(false);
-    })()
+    userHandler.InitializeUser();
   }, [])
   return (
     <>

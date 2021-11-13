@@ -78,7 +78,7 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
                   color="white"
                   dir="right"
                   onPress={async () => {
-                    const tokens = await userHandler.Login(loginUsername, loginPassword);
+                    await userHandler.Login(loginUsername, loginPassword);
                     setIsOpen(false);
                   }}
                 >

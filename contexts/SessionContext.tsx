@@ -16,7 +16,6 @@ interface UserContextProps {
   user: UserType | null,
   userHandler: UserHandler,
   isLoading: boolean,
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 const sessionContext = createContext({} as UserContextProps);
@@ -25,14 +24,13 @@ export default function SessionProvider({ children }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null as UserType | null);
   const tokensHandler = new TokensHandler();
-  const userHandler = new UserHandler(setUser, tokensHandler);
+  const userHandler = new UserHandler(setUser, setIsLoading, tokensHandler);
   return (
     <sessionContext.Provider
       value={{
         user,
         userHandler,
         isLoading,
-        setIsLoading
       }}
     >
       {children}
