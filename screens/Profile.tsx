@@ -6,7 +6,7 @@ import Heading from '../components/Heading'
 import Loading from '../components/Loading'
 import Note from '../components/Note'
 import SafeAreaView from '../components/SafeAreaView'
-import { userContext } from '../contexts/UserContext'
+import { sessionContext } from '../contexts/SessionContext'
 import ScreensParamsList from '../lib/screens'
 import MainImage from "../components/MainImage"
 import Text from '../components/Text'
@@ -21,7 +21,7 @@ function Profile({
   route
 }: Props): ReactElement {
 
-  const { user, isLoading } = useContext(userContext)
+  const { user, isLoading } = useContext(sessionContext)
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { Box } from 'native-base'
 import React, { ReactElement, useContext } from 'react'
-import { userContext } from '../contexts/UserContext';
+import { sessionContext } from '../contexts/SessionContext';
 import ButtonWithIcon from './ButtonWithIcon';
 import Loading from './Loading';
 
@@ -13,7 +13,7 @@ function EnterButtons({
   enter,
   auth
 }: Props): ReactElement {
-  const { isLoading, user } = useContext(userContext)
+  const { isLoading, user } = useContext(sessionContext)
   return (
     <>
       {

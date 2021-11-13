@@ -3,13 +3,8 @@ import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import ButtonWithIcon from './ButtonWithIcon'
 import Heading from './Heading'
 import FormControl from "../components/FormControl"
-import { userContext } from '../contexts/UserContext'
-import client, { serverUrl } from '../lib/apolloClient'
-import queries from '../lib/queries'
-import { TokensLoginDto } from '../models/Tokens'
-import UserType from '../models/UserType'
-import { tokensContext } from '../contexts/TokensContext'
-
+import { sessionContext } from '../contexts/SessionContext'
+import TokensHandler from '../lib/TokensHandler'
 
 interface Props {
   isOpen: boolean,
@@ -18,8 +13,7 @@ interface Props {
 }
 
 function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
-  const { setUser } = useContext(userContext);
-  const { getToken, storeToken, storeRefreshToken } = useContext(tokensContext);
+  const { userHandler } = useContext(sessionContext);
   const [authType, setAuthType] = useState("login" as "login" | "register");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -84,11 +78,7 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
                   color="white"
                   dir="right"
                   onPress={async () => {
-                    const tokens = await login(loginUsername, loginPassword);
-                    if (tokens?.token) {
-                      const user = await getUser(tokens.token);
-                      setUser?.(user);
-                    }
+                    const tokens = await userHandler.Login(loginUsername, loginPassword);
                     setIsOpen(false);
                   }}
                 >
@@ -139,36 +129,8 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
       </Modal.Content>
     </Modal>
   )
-  async function login(username: string, password: string): Promise<TokensLoginDto | null> {
-    const result = await fetch(serverUrl + "/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({ username: loginUsername, password: loginPassword })
-    });
-    const tokens = await result.json() as TokensLoginDto | null;
-    if (tokens?.token && tokens?.refreshToken) {
-      storeToken(tokens.token);
-      storeRefreshToken(tokens.refreshToken)
-    }
-    return tokens;
-  };
 }
 
-async function getUser(token: string): Promise<UserType | null> {
-  const graphResult = await client.query({
-    query: queries.getSelf,
-    context: {
-      headers: {
-        "Authorization": `bearer ${token}`
-      }
-    }
-  });
-  const user = graphResult.data?.self as UserType | null;
-  return user;
-}
 
 
 export default AuthModal
