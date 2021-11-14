@@ -13,7 +13,7 @@ function EnterButtons({
   enter,
   auth
 }: Props): ReactElement {
-  const { isLoading, user } = useContext(sessionContext)
+  const { isLoading, userHandler } = useContext(sessionContext)
   return (
     <>
       {
@@ -23,7 +23,7 @@ function EnterButtons({
           :
           <Box>
             {
-              user
+              userHandler.User
                 ?
                 <ButtonWithIcon
                   shadow

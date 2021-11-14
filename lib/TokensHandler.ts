@@ -59,6 +59,10 @@ class TokensHandler {
       await this.StoreRefreshToken(tokens.refreshToken);
     }
   }
+  RemoveTokens = async () => {
+    await this.Storage.remove({ key: "token" });
+    await this.Storage.remove({ key: "refresh-token" });
+  }
 }
 
 export default TokensHandler;

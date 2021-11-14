@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { Box, HStack, ScrollView } from 'native-base'
+import { Box, Button, HStack, ScrollView } from 'native-base'
 import React, { ReactElement, useContext } from 'react'
 import Container from '../components/Container'
 import Heading from '../components/Heading'
@@ -21,7 +21,7 @@ function Profile({
   route
 }: Props): ReactElement {
 
-  const { user, isLoading } = useContext(sessionContext)
+  const { userHandler, isLoading } = useContext(sessionContext)
 
   return (
     <>
@@ -36,11 +36,25 @@ function Profile({
       />
       <SafeAreaView>
         {
-          isLoading || user === null
+          isLoading || !userHandler.User
             ?
             <Loading />
             :
             <Container>
+              {
+                userHandler.Online
+                  ?
+                  <Button
+                    onPress={() => {
+                      userHandler.Logout();
+                      navigation.navigate("Home");
+                    }}
+                  >
+                    Logout
+                  </Button>
+                  :
+                  <></>
+              }
               <Note
                 shadow
                 bg="amber.500"
@@ -50,18 +64,18 @@ function Profile({
               >
                 <Heading
                   color="white"
-                >{user.username}</Heading>
+                >{userHandler.User.username}</Heading>
               </Note>
               <MainImage
                 mb="6"
-                alt={user.username}
-                image={user.avatar}
+                alt={userHandler.User.username}
+                image={userHandler.User.avatar}
               />
               <Note
                 shadow
                 mb="6"
               >
-                <Text>{user.description}</Text>
+                <Text>{userHandler.User.description}</Text>
               </Note>
               <Note
                 mb="6"
@@ -73,7 +87,7 @@ function Profile({
                   mb="5"
                 >Bebidas Favoritas</Heading>
                 <CardsSlider>
-                  {getBeveragesCards(user.favoriteBeverages)}
+                  {getBeveragesCards(userHandler.User.favoriteBeverages)}
                 </CardsSlider>
               </Note>
               <Note
@@ -87,7 +101,7 @@ function Profile({
                   mb="5"
                 >Bebidas Creadas</Heading>
                 <CardsSlider>
-                  {getBeveragesCards(user.createdBeverages)}
+                  {getBeveragesCards(userHandler.User.createdBeverages)}
                 </CardsSlider>
               </Note>
             </Container>

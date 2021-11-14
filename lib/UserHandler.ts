@@ -4,25 +4,41 @@ import client, { serverUrl } from "./apolloClient";
 import queries from "./queries";
 import TokensHandler from "./TokensHandler";
 
+interface Props {
+  setUser: React.Dispatch<React.SetStateAction<UserType | null>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  isOnline: boolean,
+  user: UserType | null,
+  setIsOnline: React.Dispatch<React.SetStateAction<boolean>>,
+  tokensHandler: TokensHandler
+}
+
 class UserHandler {
   _SetUser: React.Dispatch<React.SetStateAction<UserType | null>>;
   SetIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  Online = false;
+  User: UserType | null;
+  Online: boolean;
+  SetIsOnline: React.Dispatch<React.SetStateAction<boolean>>;
   TokensHandler: TokensHandler;
 
-  constructor(
-    setUser: React.Dispatch<React.SetStateAction<UserType | null>>,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    tokensHandler: TokensHandler
-  ) {
+  constructor({
+    user,
+    setUser,
+    setIsLoading,
+    isOnline,
+    setIsOnline,
+    tokensHandler
+  }: Props) {
+    this.User = user;
     this._SetUser = setUser;
     this.SetIsLoading = setIsLoading;
+    this.Online = isOnline;
+    this.SetIsOnline = setIsOnline;
     this.TokensHandler = tokensHandler;
   }
   SetUser = (user: UserType | null) => {
-    this.Online = !!user;
+    this.SetIsOnline(!!user);
     this._SetUser(user);
-    console.log(this.Online)
   }
   Login = async (username: string, password: string) => {
     const tokens = await this.GetTokensLogin(username, password);
@@ -31,6 +47,11 @@ class UserHandler {
       this.SetUser(user);
     }
     await this.TokensHandler.StoreTokens(tokens);
+  };
+  Logout = async () => {
+    this.TokensHandler.RemoveTokens();
+    this.SetIsOnline(false);
+    this.SetUser(null);
   };
   InitializeUser = async () => {
     this.SetIsLoading(true);

@@ -13,7 +13,6 @@ interface Props {
 }
 
 interface UserContextProps {
-  user: UserType | null,
   userHandler: UserHandler,
   isLoading: boolean,
 }
@@ -22,13 +21,20 @@ const sessionContext = createContext({} as UserContextProps);
 
 export default function SessionProvider({ children }: Props) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isOnline, setIsOnline] = useState(false);
   const [user, setUser] = useState(null as UserType | null);
   const tokensHandler = new TokensHandler();
-  const userHandler = new UserHandler(setUser, setIsLoading, tokensHandler);
+  const userHandler = new UserHandler({
+    user,
+    setUser,
+    setIsLoading,
+    isOnline,
+    setIsOnline,
+    tokensHandler
+  });
   return (
     <sessionContext.Provider
       value={{
-        user,
         userHandler,
         isLoading,
       }}
