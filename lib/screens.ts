@@ -7,7 +7,7 @@ type ScreensParamsList = {
     filters: string[]
   },
   Bebida: {
-    data: BeverageGraphType
+    id: string
   },
   Perfil: undefined,
   Lab: undefined

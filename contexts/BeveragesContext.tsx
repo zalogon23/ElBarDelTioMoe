@@ -1,7 +1,5 @@
 import React, { createContext, ReactElement, useEffect, useState } from "react"
-import client from "../lib/apolloClient";
 import BeveragesHandler from "../lib/BeveragesHandler";
-import queries from "../lib/queries";
 import { BeverageGraphType } from "../models/BeverageType";
 
 interface BeverageProviderProps {

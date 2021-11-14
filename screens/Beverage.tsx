@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import Background from '../components/Background';
 import Container from '../components/Container';
 import ScreensParamsList from '../lib/screens'
@@ -14,12 +14,16 @@ import LineCardStack from '../components/LineCardStack';
 import BeverageType, { BeverageGraphType } from '../models/BeverageType';
 import MainImage from "../components/MainImage"
 import { Box } from 'native-base';
+import { beveragesContext } from '../contexts/BeveragesContext';
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Bebida">;
 
 function Beverage({ navigation, route }: Props): ReactElement {
-
-  const beverage = route?.params?.data ?? beverages[0];
+  let currentBeverage: BeverageGraphType | null;
+  const { beverages } = useContext(beveragesContext)
+  const id = route.params.id ?? "";
+  const beverage = beverages.find(x => x.id === id) ?? null;
+  currentBeverage = beverage;
   return (
     <>
       <Box
@@ -37,15 +41,15 @@ function Beverage({ navigation, route }: Props): ReactElement {
             py="3"
             px="3"
           >
-            <Heading>{beverage.name}</Heading>
+            <Heading>{currentBeverage ? currentBeverage.name : ""}</Heading>
           </Note>
           <MainImage
-            alt={beverage.name}
+            alt={currentBeverage ? currentBeverage.name : ""}
             mt="10"
-            image={beverage.image}
+            image={currentBeverage ? currentBeverage.image : ""}
           />
           <FiltersShelf
-            filters={beverage.keywords.map(keyword => keyword.content)}
+            filters={currentBeverage ? currentBeverage.keywords.map(keyword => keyword.content) : []}
             removable={false}
           />
           <Note
@@ -56,7 +60,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
               mb="2"
             >Descripción</Heading>
             <Text>
-              {beverage.description}
+              {currentBeverage ? currentBeverage.description : ""}
             </Text>
           </Note>
           <Note
@@ -67,7 +71,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
             <Heading>Ingredientes</Heading>
             <LineCardStack
               donable={false}
-              items={beverage.ingredients}
+              items={currentBeverage ? currentBeverage.ingredients : []}
             />
           </Note>
           <Note
@@ -79,29 +83,11 @@ function Beverage({ navigation, route }: Props): ReactElement {
             <Heading>Instrucciones</Heading>
             <LineCardStack
               donable
-              items={beverage.instructions}
+              items={currentBeverage ? currentBeverage.instructions : []}
             />
           </Note>
         </Container>
       </SafeAreaView>
-    </>
-  )
-}
-
-function Ingredients({ beverage }: { beverage: BeverageGraphType }): ReactElement {
-  return (
-    <>
-      {
-        beverage.ingredients.map((ingredient): ReactElement => (
-          <Note
-            px="3"
-            py="3"
-            bg="amber.400"
-          >
-            <Text>{ingredient.product}</Text>
-          </Note>
-        ))
-      }
     </>
   )
 }

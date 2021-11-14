@@ -2,13 +2,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Box, ScrollView, VStack, Button } from 'native-base'
 import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import SafeAreaView from '../components/SafeAreaView';
-import Background from '../components/Background';
 import Bigcard from '../components/Bigcard';
 import Container from '../components/Container';
 import FiltersShelf from '../components/FiltersShelf';
-import Heading from '../components/Heading';
 import ScreensParamsList from '../lib/screens';
-import background, { alt } from "../lib/background";
 import CheckboxModal from '../components/CheckboxModal';
 import { beveragesContext } from '../contexts/BeveragesContext';
 import Loading from '../components/Loading';
@@ -75,7 +72,7 @@ function Beverages({ navigation, route }: Props): ReactElement {
                     <Bigcard
                       key={data.id}
                       onPress={() => {
-                        navigation.navigate("Bebida", { data })
+                        navigation.navigate("Bebida", { id: data.id });
                       }}
                       image={data.image}
                       name={data.name}

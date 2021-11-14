@@ -63,6 +63,7 @@ export default function App() {
                     />
                     <Screen
                       name="Bebida"
+                      getId={({ params }) => params.id}
                       component={Beverage}
                       options={getHeaderOptions}
                     /><Screen

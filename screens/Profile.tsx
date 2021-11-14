@@ -11,8 +11,7 @@ import ScreensParamsList from '../lib/screens'
 import MainImage from "../components/MainImage"
 import Text from '../components/Text'
 import SmallCard from '../components/SmallCard'
-import UserType from '../models/UserType'
-import BeverageType, { BeverageGraphType } from '../models/BeverageType'
+import { BeverageGraphType } from '../models/BeverageType'
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Perfil">
 
@@ -111,12 +110,15 @@ function Profile({
   )
 
   function getBeveragesCards(beverages: BeverageGraphType[]): ReactElement[] {
-    const cards = beverages.map(bev => (
+    const cards = beverages.map(data => (
       <SmallCard
+        key={data.id}
         shadow
-        name={bev.name}
-        image={bev.image}
-        onPress={() => navigation.navigate("Bebida", { data: bev })}
+        name={data.name}
+        image={data.image}
+        onPress={() => {
+          navigation.navigate("Bebida", { id: data.id })
+        }}
       />
     )) as ReactElement[]
     return cards

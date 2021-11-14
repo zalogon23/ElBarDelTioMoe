@@ -1,13 +1,11 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Box, HStack, ScrollView } from 'native-base'
 import React, { ReactElement, useContext } from 'react'
-import Background from '../components/Background'
 import SafeAreaView from '../components/SafeAreaView';
 import ButtonWithIcon from '../components/ButtonWithIcon';
 import Container from '../components/Container';
 import SmallCard from '../components/SmallCard';
 import ScreensParamsList from '../lib/screens';
-import background, { alt } from "../lib/background";
 import { beveragesContext } from "../contexts/BeveragesContext";
 
 type Props = NativeStackScreenProps<ScreensParamsList, "Bar">
@@ -65,7 +63,7 @@ function Bar({ navigation }: Props): ReactElement {
                     name={data.name}
                     image={data.image}
                     onPress={() => {
-                      navigation.navigate("Bebida", { data })
+                      navigation.navigate("Bebida", { id: data.id });
                     }}
                   />
                 ))
