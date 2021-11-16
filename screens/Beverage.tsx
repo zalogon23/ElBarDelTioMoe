@@ -19,11 +19,9 @@ import { beveragesContext } from '../contexts/BeveragesContext';
 type Props = NativeStackScreenProps<ScreensParamsList, "Bebida">;
 
 function Beverage({ navigation, route }: Props): ReactElement {
-  let currentBeverage: BeverageGraphType | null;
   const { beverages } = useContext(beveragesContext)
   const id = route.params.id ?? "";
-  const beverage = beverages.find(x => x.id === id) ?? null;
-  currentBeverage = beverage;
+  const currentBeverage = beverages.find(x => x.id === id) ?? null;
   return (
     <>
       <Box
@@ -41,15 +39,15 @@ function Beverage({ navigation, route }: Props): ReactElement {
             py="3"
             px="3"
           >
-            <Heading>{currentBeverage ? currentBeverage.name : ""}</Heading>
+            <Heading>{currentBeverage?.name ?? ""}</Heading>
           </Note>
           <MainImage
-            alt={currentBeverage ? currentBeverage.name : ""}
+            alt={currentBeverage?.name ?? ""}
             mt="10"
-            image={currentBeverage ? currentBeverage.image : ""}
+            image={currentBeverage?.image ?? ""}
           />
           <FiltersShelf
-            filters={currentBeverage ? currentBeverage.keywords.map(keyword => keyword.content) : []}
+            filters={currentBeverage?.keywords.map(keyword => keyword.content) ?? []}
             removable={false}
           />
           <Note
@@ -60,7 +58,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
               mb="2"
             >Descripción</Heading>
             <Text>
-              {currentBeverage ? currentBeverage.description : ""}
+              {currentBeverage?.description ?? ""}
             </Text>
           </Note>
           <Note
@@ -71,7 +69,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
             <Heading>Ingredientes</Heading>
             <LineCardStack
               donable={false}
-              items={currentBeverage ? currentBeverage.ingredients : []}
+              items={currentBeverage?.ingredients ?? []}
             />
           </Note>
           <Note
@@ -83,7 +81,7 @@ function Beverage({ navigation, route }: Props): ReactElement {
             <Heading>Instrucciones</Heading>
             <LineCardStack
               donable
-              items={currentBeverage ? currentBeverage.instructions : []}
+              items={[...currentBeverage?.instructions ?? []].sort((a, b) => a?.order - b?.order)}
             />
           </Note>
         </Container>
