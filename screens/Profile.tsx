@@ -20,7 +20,7 @@ function Profile({
   route
 }: Props): ReactElement {
 
-  const { userHandler, isLoading } = useContext(sessionContext)
+  const { sessionHandler, isLoading } = useContext(sessionContext)
 
   return (
     <>
@@ -35,17 +35,17 @@ function Profile({
       />
       <SafeAreaView>
         {
-          isLoading || !userHandler.User
+          isLoading || !sessionHandler.User
             ?
             <Loading />
             :
             <Container>
               {
-                userHandler.Online
+                sessionHandler.Online
                   ?
                   <Button
                     onPress={() => {
-                      userHandler.Logout();
+                      sessionHandler.Logout();
                       navigation.navigate("Home");
                     }}
                   >
@@ -63,18 +63,18 @@ function Profile({
               >
                 <Heading
                   color="white"
-                >{userHandler.User.username}</Heading>
+                >{sessionHandler.User.username}</Heading>
               </Note>
               <MainImage
                 mb="6"
-                alt={userHandler.User.username}
-                image={userHandler.User.avatar}
+                alt={sessionHandler.User.username}
+                image={sessionHandler.User.avatar}
               />
               <Note
                 shadow
                 mb="6"
               >
-                <Text>{userHandler.User.description}</Text>
+                <Text>{sessionHandler.User.description}</Text>
               </Note>
               <Note
                 mb="6"
@@ -86,7 +86,7 @@ function Profile({
                   mb="5"
                 >Bebidas Favoritas</Heading>
                 <CardsSlider>
-                  {getBeveragesCards(userHandler.User.favoriteBeverages)}
+                  {getBeveragesCards(sessionHandler.User.favoriteBeverages)}
                 </CardsSlider>
               </Note>
               <Note
@@ -100,7 +100,7 @@ function Profile({
                   mb="5"
                 >Bebidas Creadas</Heading>
                 <CardsSlider>
-                  {getBeveragesCards(userHandler.User.createdBeverages)}
+                  {getBeveragesCards(sessionHandler.User.createdBeverages)}
                 </CardsSlider>
               </Note>
             </Container>

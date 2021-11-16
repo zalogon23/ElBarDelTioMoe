@@ -13,7 +13,7 @@ interface Props {
 }
 
 function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
-  const { userHandler } = useContext(sessionContext);
+  const { sessionHandler } = useContext(sessionContext);
   const [authType, setAuthType] = useState("login" as "login" | "register");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -78,7 +78,7 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
                   color="white"
                   dir="right"
                   onPress={async () => {
-                    await userHandler.Login(loginUsername, loginPassword);
+                    await sessionHandler.Login(loginUsername, loginPassword);
                     setIsOpen(false);
                   }}
                 >

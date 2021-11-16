@@ -1,6 +1,9 @@
 import { TokensLoginDto } from "../models/Tokens";
+import UserHandler from "../models/UserHandler";
 import UserType from "../models/UserType";
 import client, { serverUrl } from "./apolloClient";
+import LocalUserHandler from "./LocalUserHandler";
+import OnlineUserHandler from "./OnlineUserHandler";
 import queries from "./queries";
 import TokensHandler from "./TokensHandler";
 
@@ -13,13 +16,14 @@ interface Props {
   tokensHandler: TokensHandler
 }
 
-class UserHandler {
+class SessionHandler {
   _SetUser: React.Dispatch<React.SetStateAction<UserType | null>>;
   SetIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   User: UserType | null;
   Online: boolean;
   SetIsOnline: React.Dispatch<React.SetStateAction<boolean>>;
   TokensHandler: TokensHandler;
+  UserHandler: UserHandler;
 
   constructor({
     user,
@@ -35,6 +39,7 @@ class UserHandler {
     this.Online = isOnline;
     this.SetIsOnline = setIsOnline;
     this.TokensHandler = tokensHandler;
+    this.UserHandler = new OnlineUserHandler();
   }
   SetUser = (user: UserType | null) => {
     this.SetIsOnline(user?.isOnline ?? false);
@@ -51,14 +56,19 @@ class UserHandler {
   Logout = async () => {
     this.TokensHandler.RemoveTokens();
     this.SetIsOnline(false);
-    const localUser = await this.GetLocalUser();
-    this.SetUser(localUser);
+    this.UserHandler = new LocalUserHandler();
+    const user = await this.UserHandler.GetUser("");
+    this.SetUser(user);
   };
   InitializeUser = async () => {
     this.SetIsLoading(true);
     await this.TokensHandler.RefreshTokens();
     const token = await this.TokensHandler.GetToken();
-    const user = await this.GetUser(token);
+    let user = await this.GetUser(token);
+    if (!user) {
+      this.UserHandler = new LocalUserHandler();
+      user = await this.UserHandler.GetUser("");
+    }
     this.SetUser(user);
     this.SetIsLoading(false);
   }
@@ -75,34 +85,9 @@ class UserHandler {
     return tokens;
   };
   GetUser = async (token: string) => {
-    const graphResult = await client.query({
-      query: queries.getSelf,
-      context: {
-        headers: {
-          "Authorization": `bearer ${token}`
-        }
-      }
-    });
-    const user = graphResult.data?.self as UserType | null;
-    if (user) {
-      const onlineUser = { ...user, isOnline: true };
-      return onlineUser;
-    }
-    const jack: UserType = await this.GetLocalUser();
-    return jack
+    const user = await this.UserHandler.GetUser(token);
+    return user;
   };
-  GetLocalUser = async (): Promise<UserType> => {
-    return {
-      id: "local-12355465427524757",
-      username: "Jack Sparrow",
-      password: "something cvrasy",
-      description: "Un tio pirata bien mamao, con guille de guatusi",
-      avatar: "https://jacksparrow.com/calato.jpg",
-      isOnline: false,
-      createdBeverages: [],
-      favoriteBeverages: []
-    }
-  }
 };
 
-export default UserHandler;
+export default SessionHandler;

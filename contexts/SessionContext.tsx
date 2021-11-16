@@ -5,7 +5,7 @@ import client, { serverUrl } from "../lib/apolloClient";
 import queries from "../lib/queries";
 import { AsyncStorage, Platform } from "react-native";
 import Storage from "react-native-storage";
-import UserHandler from "../lib/UserHandler";
+import SessionHandler from "../lib/SessionHandler";
 import TokensHandler from "../lib/TokensHandler";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 }
 
 interface UserContextProps {
-  userHandler: UserHandler,
+  sessionHandler: SessionHandler,
   isLoading: boolean,
 }
 
@@ -24,7 +24,7 @@ export default function SessionProvider({ children }: Props) {
   const [isOnline, setIsOnline] = useState(false);
   const [user, setUser] = useState(null as UserType | null);
   const tokensHandler = new TokensHandler();
-  const userHandler = new UserHandler({
+  const sessionHandler = new SessionHandler({
     user,
     setUser,
     setIsLoading,
@@ -35,7 +35,7 @@ export default function SessionProvider({ children }: Props) {
   return (
     <sessionContext.Provider
       value={{
-        userHandler,
+        sessionHandler,
         isLoading,
       }}
     >
