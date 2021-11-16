@@ -119,7 +119,11 @@ function AuthModal({ isOpen, setIsOpen, ...props }: Props): ReactElement {
                   name="send"
                   color="white"
                   dir="right"
-                  onPress={() => { }}
+                  onPress={async () => {
+                    const created = await sessionHandler.Register(registerUsername, registerPassword);
+                    console.log(`It ${created ? "was" : "wasn't"} created!`);
+                    setIsOpen(false);
+                  }}
                 >
                   Enviar
                 </ButtonWithIcon>

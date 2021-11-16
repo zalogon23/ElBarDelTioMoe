@@ -53,6 +53,20 @@ class SessionHandler {
     }
     await this.TokensHandler.StoreTokens(tokens);
   };
+  Register = async (username: string, password: string): Promise<boolean> => {
+    const graphResult = await client.mutate({
+      mutation: queries.createUser, variables: {
+        user: {
+          username,
+          password,
+          description: "",
+          avatar: ""
+        }
+      }
+    });
+    const user = graphResult.data?.createUser as UserType | null;
+    return !!user;
+  };
   Logout = async () => {
     this.TokensHandler.RemoveTokens();
     this.SetIsOnline(false);

@@ -51,17 +51,7 @@ const queries = {
   createUser: gql`
   mutation($user: UserInput!){
     createUser(user: $user){
-      id username description password avatar
-      createdBeverages{
-        id name description image native 
-        ingredients{id product quantity measure beverageId} 
-        instructions{id content order beverageId} keywords{id content}
-      }
-      favoriteBeverages{
-        id name description image native 
-        ingredients{id product quantity measure beverageId} 
-        instructions{id content order beverageId} keywords{id content}
-      }
+      id
     }
   }
   `
