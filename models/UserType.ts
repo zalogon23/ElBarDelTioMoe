@@ -7,6 +7,7 @@ export default interface UserType {
   password: string,
   avatar: string,
   description: string,
+  isOnline: boolean,
   favoriteBeverages: BeverageGraphType[],
   createdBeverages: BeverageGraphType[],
 }

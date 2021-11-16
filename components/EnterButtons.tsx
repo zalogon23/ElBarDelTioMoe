@@ -23,7 +23,7 @@ function EnterButtons({
           :
           <Box>
             {
-              userHandler.User
+              userHandler.Online
                 ?
                 <ButtonWithIcon
                   shadow

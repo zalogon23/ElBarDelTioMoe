@@ -37,7 +37,7 @@ class UserHandler {
     this.TokensHandler = tokensHandler;
   }
   SetUser = (user: UserType | null) => {
-    this.SetIsOnline(!!user);
+    this.SetIsOnline(user?.isOnline ?? false);
     this._SetUser(user);
   }
   Login = async (username: string, password: string) => {
@@ -51,7 +51,8 @@ class UserHandler {
   Logout = async () => {
     this.TokensHandler.RemoveTokens();
     this.SetIsOnline(false);
-    this.SetUser(null);
+    const localUser = await this.GetLocalUser();
+    this.SetUser(localUser);
   };
   InitializeUser = async () => {
     this.SetIsLoading(true);
@@ -83,8 +84,25 @@ class UserHandler {
       }
     });
     const user = graphResult.data?.self as UserType | null;
-    return user;
+    if (user) {
+      const onlineUser = { ...user, isOnline: true };
+      return onlineUser;
+    }
+    const jack: UserType = await this.GetLocalUser();
+    return jack
   };
+  GetLocalUser = async (): Promise<UserType> => {
+    return {
+      id: "local-12355465427524757",
+      username: "Jack Sparrow",
+      password: "something cvrasy",
+      description: "Un tio pirata bien mamao, con guille de guatusi",
+      avatar: "https://jacksparrow.com/calato.jpg",
+      isOnline: false,
+      createdBeverages: [],
+      favoriteBeverages: []
+    }
+  }
 };
 
 export default UserHandler;
