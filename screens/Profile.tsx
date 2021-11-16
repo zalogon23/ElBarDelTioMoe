@@ -40,20 +40,26 @@ function Profile({
             <Loading />
             :
             <Container>
-              {
-                sessionHandler.Online
-                  ?
-                  <Button
-                    onPress={() => {
-                      sessionHandler.Logout();
-                      navigation.navigate("Home");
-                    }}
-                  >
-                    Logout
-                  </Button>
-                  :
-                  <></>
-              }
+              <Note
+                shadow
+                bg="amber.200"
+                mb="6"
+                pb="2"
+              >
+                <Heading
+                  mb="4"
+                >
+                  ¿Quieres crear una nueva bebida?
+                </Heading>
+                <Button
+                  colorScheme="amber"
+                  onPress={() => navigation.navigate("Lab")}
+                >
+                  <Text
+                    color="white"
+                  >¡Si!</Text>
+                </Button>
+              </Note>
               <Note
                 shadow
                 bg="amber.500"
@@ -103,6 +109,21 @@ function Profile({
                   {getBeveragesCards(sessionHandler.User.createdBeverages)}
                 </CardsSlider>
               </Note>
+              {
+                sessionHandler.Online
+                  ?
+                  <Button
+                    colorScheme="red"
+                    onPress={() => {
+                      sessionHandler.Logout();
+                      navigation.navigate("Home");
+                    }}
+                  >
+                    Logout
+                  </Button>
+                  :
+                  <></>
+              }
             </Container>
         }
       </SafeAreaView>
