@@ -1,5 +1,5 @@
 import { Badge, Box, Pressable } from 'native-base'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styling from '../lib/styling'
 import FontAwesomeIcon from './FontAwesomeIcon'
@@ -7,6 +7,7 @@ import Text from './Text'
 
 interface Props {
   onPress: (() => any) | undefined,
+  changeOnPress?: boolean,
   removable: boolean,
   icon?: boolean,
   children: string | ReactElement | ReactElement[],
@@ -15,15 +16,20 @@ interface Props {
 
 function FilterBadge({
   onPress = undefined,
+  changeOnPress = false,
   icon = false,
   removable,
   children,
   ...props }: Props): ReactElement {
+  const [pressed, setPressed] = useState(false);
 
   if (onPress) {
     return (
       <TouchableOpacity
-        onPress={onPress}
+        onPress={() => {
+          onPress();
+          if (changeOnPress) setPressed(!pressed);
+        }}
       >
         <BadgeInactive />
       </TouchableOpacity>
@@ -37,7 +43,7 @@ function FilterBadge({
   function BadgeInactive() {
     return (
       <Badge
-        bg={icon ? "amber.300" : "amber.400"}
+        bg={pressed ? "amber.500" : icon ? "amber.300" : "amber.400"}
         flexDirection="row"
         {...props}
       >
